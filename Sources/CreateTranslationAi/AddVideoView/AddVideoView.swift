@@ -128,14 +128,16 @@ extension AddVideoView: UIImagePickerControllerDelegate, UINavigationControllerD
     }
 
     func showImagePicker() {
-        let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.mediaTypes = [kUTTypeMovie as String]
-        imagePicker.delegate = self
-        if let parentVC = self.parentViewController {
-            parentVC.present(imagePicker, animated: true)
-        } else {
-            print("Parent view controller not found")
+        DispatchQueue.main.async {
+            let imagePicker = UIImagePickerController()
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.mediaTypes = [kUTTypeMovie as String]
+            imagePicker.delegate = self
+            if let parentVC = self.parentViewController {
+                parentVC.present(imagePicker, animated: true)
+            } else {
+                print("Parent view controller not found")
+            }
         }
     }
 
