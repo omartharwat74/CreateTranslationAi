@@ -105,7 +105,7 @@ class AddVideoView: UIView {
 }
 
 extension AddVideoView: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
     func openGallery() {
         let status = PHPhotoLibrary.authorizationStatus()
         switch status {
@@ -126,12 +126,13 @@ extension AddVideoView: UIImagePickerControllerDelegate, UINavigationControllerD
             fatalError("Unhandled case.")
         }
     }
-
+    
     func showImagePicker() {
         DispatchQueue.main.async {
             let imagePicker = UIImagePickerController()
             imagePicker.sourceType = .photoLibrary
             imagePicker.mediaTypes = [kUTTypeMovie as String]
+            imagePicker.allowsEditing = true
             imagePicker.delegate = self
             if let parentVC = self.parentViewController {
                 parentVC.present(imagePicker, animated: true)
@@ -140,21 +141,41 @@ extension AddVideoView: UIImagePickerControllerDelegate, UINavigationControllerD
             }
         }
     }
-
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true)
-
+        
         guard let mediaType = info[.mediaType] as? String else {
             return
         }
-
+        
         if mediaType == kUTTypeMovie as String {
             if let videoURL = info[.mediaURL] as? URL {
                 print("Video URL: \(videoURL)")
             }
         }
+        if mediaType == kUTTypeMovie as String {
+            if let videoURL = info[.mediaURL] as? URL {
+                print("Video URL: \(videoURL)")
+                
+                // Generate thumbnail image from the video URL
+                let asset = AVAsset(url: videoURL)
+                let generator = AVAssetImageGenerator(asset: asset)
+                generator.appliesPreferredTrackTransform = true
+                let time = CMTime(seconds: 0.0, preferredTimescale: 1)
+                do {
+                    let imageRef = try generator.copyCGImage(at: time, actualTime: nil)
+                    let thumbnail = UIImage(cgImage: imageRef)
+                    
+                    // Set the thumbnail image to the videoImage UIImageView
+                    videoImage.image = thumbnail
+                } catch let error {
+                    print("Error generating thumbnail: \(error)")
+                }
+            }
+        }
     }
-
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true)
     }
