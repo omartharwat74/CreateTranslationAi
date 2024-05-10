@@ -105,7 +105,6 @@ class AddVideoView: UIView {
 }
 
 extension AddVideoView: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
     func openGallery() {
         let status = PHPhotoLibrary.authorizationStatus()
         switch status {
@@ -126,12 +125,12 @@ extension AddVideoView: UIImagePickerControllerDelegate, UINavigationControllerD
             fatalError("Unhandled case.")
         }
     }
-    
+
     func showImagePicker() {
         DispatchQueue.main.async {
             let imagePicker = UIImagePickerController()
             imagePicker.sourceType = .photoLibrary
-            imagePicker.mediaTypes = [kUTTypeMovie as String]
+            imagePicker.mediaTypes = [UTType.movie.identifier]
             imagePicker.allowsEditing = true
             imagePicker.delegate = self
             if let parentVC = self.parentViewController {
@@ -141,20 +140,15 @@ extension AddVideoView: UIImagePickerControllerDelegate, UINavigationControllerD
             }
         }
     }
-    
+
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true)
-        
+
         guard let mediaType = info[.mediaType] as? String else {
             return
         }
-        
-        if mediaType == kUTTypeMovie as String {
-            if let videoURL = info[.mediaURL] as? URL {
-                print("Video URL: \(videoURL)")
-            }
-        }
-        if mediaType == kUTTypeMovie as String {
+
+        if mediaType == UTType.movie.identifier {
             if let videoURL = info[.mediaURL] as? URL {
                 print("Video URL: \(videoURL)")
                 
@@ -169,13 +163,14 @@ extension AddVideoView: UIImagePickerControllerDelegate, UINavigationControllerD
                     
                     // Set the thumbnail image to the videoImage UIImageView
                     videoImage.image = thumbnail
+                    uploadStackView.isHidden = true
                 } catch let error {
                     print("Error generating thumbnail: \(error)")
                 }
             }
         }
     }
-    
+
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true)
     }
