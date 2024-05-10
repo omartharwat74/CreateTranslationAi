@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MobileCoreServices
 
 class AddVideoView: UIView {
     
@@ -97,7 +98,41 @@ class AddVideoView: UIView {
     }
     
     @objc func viewVideoTapped() {
-        print("Video Tap")
+        openGallery()
     }
     
+}
+
+extension AddVideoView: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func openGallery() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.mediaTypes = [kUTTypeMovie as String]
+        imagePicker.delegate = self
+        if let parentVC = self.parentViewController {
+            parentVC.present(imagePicker, animated: true)
+        } else {
+            print("Parent view controller not found")
+        }
+    }
+    
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true)
+        
+        guard let mediaType = info[.mediaType] as? String else {
+            return
+        }
+        
+        if mediaType == kUTTypeMovie as String {
+            if let videoURL = info[.mediaURL] as? URL {
+                print("Video URL: \(videoURL)")
+            }
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true)
+    }
 }
