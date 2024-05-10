@@ -7,6 +7,7 @@
 
 import UIKit
 import MobileCoreServices
+import Photos
 
 class AddVideoView: UIView {
     
@@ -104,8 +105,29 @@ class AddVideoView: UIView {
 }
 
 extension AddVideoView: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
+
     func openGallery() {
+        let status = PHPhotoLibrary.authorizationStatus()
+        switch status {
+        case .authorized:
+            showImagePicker()
+        case .denied, .restricted:
+            print("Permission denied for accessing photo library.")
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization { [weak self] status in
+                guard let self = self else { return }
+                if status == .authorized {
+                    self.showImagePicker()
+                } else {
+                    print("Permission denied for accessing photo library.")
+                }
+            }
+        @unknown default:
+            fatalError("Unhandled case.")
+        }
+    }
+
+    func showImagePicker() {
         let imagePicker = UIImagePickerController()
         imagePicker.sourceType = .photoLibrary
         imagePicker.mediaTypes = [kUTTypeMovie as String]
@@ -116,22 +138,21 @@ extension AddVideoView: UIImagePickerControllerDelegate, UINavigationControllerD
             print("Parent view controller not found")
         }
     }
-    
-    
+
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true)
-        
+
         guard let mediaType = info[.mediaType] as? String else {
             return
         }
-        
+
         if mediaType == kUTTypeMovie as String {
             if let videoURL = info[.mediaURL] as? URL {
                 print("Video URL: \(videoURL)")
             }
         }
     }
-    
+
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true)
     }
