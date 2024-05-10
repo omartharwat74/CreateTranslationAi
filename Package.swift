@@ -5,19 +5,25 @@ import PackageDescription
 
 let package = Package(
     name: "CreateTranslationAi",
+    defaultLocalization: "ar",
+    platforms: [
+        .iOS(.v16),
+        .macOS(.v11)
+    ],
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "CreateTranslationAi",
             targets: ["CreateTranslationAi"]),
     ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "CreateTranslationAi"),
-        .testTarget(
-            name: "CreateTranslationAiTests",
-            dependencies: ["CreateTranslationAi"]),
+            name: "CreateTranslationAi",
+            resources: [
+                .copy("Fonts/DINNextLTArabic-Bold-4.ttf"),
+                .copy("DINNextLTArabic-Medium-4.ttf"),
+                .copy("DINNextLTArabic-Regular-3.ttf"),
+                .process("Resources")
+            ]
+        ),
     ]
 )
