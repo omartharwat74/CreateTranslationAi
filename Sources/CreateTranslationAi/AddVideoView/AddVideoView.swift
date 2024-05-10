@@ -10,6 +10,22 @@ import UIKit
 class AddVideoView: UIView {
     
     //MARK: - Outlets
+    @IBOutlet weak var projectName: UILabel!{
+        didSet{
+            projectName.text = "Project Name".localized
+        }
+    }
+    @IBOutlet weak var extractVideo: UILabel!{
+        didSet{
+            extractVideo.text = "Select the video from your files".localized
+        }
+    }
+    @IBOutlet weak var chooseVideo: UILabel!{
+        didSet{
+            chooseVideo.text = "Choose the video".localized
+        }
+    }
+    
     @IBOutlet weak var backButton: UIButton!{
         didSet{
             if Locale.current.language.languageCode!.identifier == "en" {
