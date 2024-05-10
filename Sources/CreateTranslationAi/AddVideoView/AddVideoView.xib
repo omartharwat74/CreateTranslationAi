@@ -17,6 +17,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddVideoView" customModuleProvider="target">
             <connections>
                 <outlet property="backButton" destination="WtY-w7-7Sv" id="94B-4I-YvY"/>
+                <outlet property="chooseVideo" destination="w6r-Xi-qjO" id="Png-RN-AOP"/>
+                <outlet property="extractVideo" destination="WgJ-5d-lQY" id="mHK-TT-C4V"/>
+                <outlet property="projectName" destination="UAh-pZ-YlN" id="gAq-nb-at2"/>
                 <outlet property="translateButton" destination="ULw-0o-eyv" id="GcZ-OP-5Eo"/>
                 <outlet property="uploadStackView" destination="DM9-RZ-STI" id="Ff0-aE-4i2"/>
                 <outlet property="videoImage" destination="shv-Yh-9Vv" id="mUe-oJ-nr9"/>
