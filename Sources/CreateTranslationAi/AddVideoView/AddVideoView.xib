@@ -6,6 +6,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -21,6 +22,9 @@
                 <outlet property="extractVideo" destination="WgJ-5d-lQY" id="mHK-TT-C4V"/>
                 <outlet property="projectName" destination="UAh-pZ-YlN" id="gAq-nb-at2"/>
                 <outlet property="translateButton" destination="ULw-0o-eyv" id="GcZ-OP-5Eo"/>
+                <outlet property="translateFromView" destination="849-2X-kmK" id="aih-eW-207"/>
+                <outlet property="translateToView" destination="SrN-qF-czf" id="WhM-7J-nNt"/>
+                <outlet property="translateView" destination="o9d-PS-Ugg" id="xzA-KQ-NX4"/>
                 <outlet property="uploadStackView" destination="DM9-RZ-STI" id="Ff0-aE-4i2"/>
                 <outlet property="videoImage" destination="shv-Yh-9Vv" id="mUe-oJ-nr9"/>
                 <outlet property="videoView" destination="yCU-rf-WGj" id="zy8-MA-oa6"/>
@@ -67,10 +71,10 @@
                     <rect key="frame" x="0.0" y="147" width="393" height="588"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mx3-qL-Slj">
-                            <rect key="frame" x="0.0" y="0.0" width="393" height="294"/>
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="522"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="12f-nJ-Dwq">
-                                    <rect key="frame" x="16" y="24" width="361" height="270"/>
+                                    <rect key="frame" x="16" y="24" width="361" height="498"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select the video from your files" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WgJ-5d-lQY">
                                             <rect key="frame" x="0.0" y="0.0" width="361" height="26"/>
@@ -124,6 +128,61 @@
                                                 <constraint firstItem="DM9-RZ-STI" firstAttribute="centerX" secondItem="yCU-rf-WGj" secondAttribute="centerX" id="Odq-6P-RQs"/>
                                                 <constraint firstAttribute="trailing" secondItem="shv-Yh-9Vv" secondAttribute="trailing" id="eds-z0-Gt5"/>
                                                 <constraint firstAttribute="bottom" secondItem="shv-Yh-9Vv" secondAttribute="bottom" id="sUZ-QM-zK8"/>
+                                            </constraints>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o9d-PS-Ugg">
+                                            <rect key="frame" x="0.0" y="294" width="361" height="204"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Xys-el-1t9">
+                                                    <rect key="frame" x="12" y="16" width="337" height="172"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose the picture" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nr7-dO-aaw">
+                                                            <rect key="frame" x="0.0" y="0.0" width="337" height="21"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="21" id="9gL-DV-7Xx"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="string" keyPath="translationKey" value="Choose the video"/>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </label>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="849-2X-kmK" customClass="SwiftyMenu" customModule="SwiftyMenu">
+                                                            <rect key="frame" x="0.0" y="37" width="337" height="41"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="41" id="JVT-PG-KJV"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose the picture" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kYk-Cz-PZi">
+                                                            <rect key="frame" x="0.0" y="94" width="337" height="21"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="21" id="4Yb-di-abL"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="string" keyPath="translationKey" value="Choose the video"/>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </label>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SrN-qF-czf" customClass="SwiftyMenu" customModule="SwiftyMenu">
+                                                            <rect key="frame" x="0.0" y="131" width="337" height="41"/>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="41" id="Ere-0M-00H"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.20784313730000001" green="0.21960784310000001" blue="0.2470588235" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="Xys-el-1t9" secondAttribute="bottom" constant="16" id="Az0-4y-EVt"/>
+                                                <constraint firstItem="Xys-el-1t9" firstAttribute="leading" secondItem="o9d-PS-Ugg" secondAttribute="leading" constant="12" id="WCr-i5-SyT"/>
+                                                <constraint firstItem="Xys-el-1t9" firstAttribute="top" secondItem="o9d-PS-Ugg" secondAttribute="top" constant="16" id="l8O-ND-5UV"/>
+                                                <constraint firstAttribute="trailing" secondItem="Xys-el-1t9" secondAttribute="trailing" constant="12" id="xbQ-OA-Gxi"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -208,5 +267,8 @@
         <image name="Upload" width="45" height="44"/>
         <image name="arrow.right" catalog="system" width="128" height="95"/>
         <image name="image 12" width="16" height="17"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

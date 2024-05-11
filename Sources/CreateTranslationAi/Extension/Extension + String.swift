@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SwiftyMenu
 
 
 extension String {
@@ -32,4 +33,16 @@ extension UILabel {
             }
         }
     }
+}
+
+extension String: SwiftyMenuDisplayable {
+    
+    public var retrievableValue: Any {
+        return self
+    }
+    
+    public var displayableValue: String {
+        return self
+    }
+    
 }
