@@ -261,7 +261,7 @@
         </view>
     </objects>
     <resources>
-        <image name="Upload" width="45" height="44"/>
+        <image name="Upload" width="60" height="58"/>
         <image name="arrow.right" catalog="system" width="128" height="95"/>
         <image name="image 12" width="16" height="17"/>
     </resources>
