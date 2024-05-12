@@ -34,7 +34,7 @@ extension UIView {
         shapeLayer.lineJoin = .round
         shapeLayer.lineDashPattern = [10, 5]
         shapeLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: 25).cgPath
-        shapeLayer.frame = layer.frame
+        shapeLayer.frame = layer.bounds
         self.layer.addSublayer(shapeLayer)
     }
 }
