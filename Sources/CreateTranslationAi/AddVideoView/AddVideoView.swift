@@ -59,8 +59,6 @@ class AddVideoView: UIView {
     @IBOutlet weak var videoView: UIView!{
         didSet{
             videoView.layer.cornerRadius = 25
-//            videoView.layer.borderWidth = 1
-//            videoView.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.1).cgColor
         }
     }
     @IBOutlet weak var videoImage: UIImageView!{
@@ -209,30 +207,3 @@ extension AddVideoView: UIImagePickerControllerDelegate, UINavigationControllerD
         picker.dismiss(animated: true)
     }
 }
-
-//extension AddVideoView: SwiftyMenuDelegate {
-//    // Get selected option from SwiftyMenu
-//    func swiftyMenu(_ swiftyMenu: SwiftyMenu, didSelectItem item: SwiftyMenuDisplayable, atIndex index: Int) {
-//        print("Selected item: \(item), at index: \(index)")
-//    }
-//    
-//    // SwiftyMenu drop down menu will expand
-//    func swiftyMenu(willExpand swiftyMenu: SwiftyMenu) {
-//        print("SwiftyMenu willExpand.")
-//    }
-//    
-//    // SwiftyMenu drop down menu did expand
-//    func swiftyMenu(didExpand swiftyMenu: SwiftyMenu) {
-//        print("SwiftyMenu didExpand.")
-//    }
-//    
-//    // SwiftyMenu drop down menu will collapse
-//    func swiftyMenu(willCollapse swiftyMenu: SwiftyMenu) {
-//        print("SwiftyMenu willCollapse.")
-//    }
-//    
-//    // SwiftyMenu drop down menu did collapse
-//    func swiftyMenu(didCollapse swiftyMenu: SwiftyMenu) {
-//        print("SwiftyMenu didCollapse.")
-//    }
-//}
