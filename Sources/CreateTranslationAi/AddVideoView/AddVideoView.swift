@@ -79,12 +79,12 @@ class AddVideoView: UIView {
 //    @IBOutlet weak var translateToView: SwiftyMenu!
 //    
     
-    private let dropDownOptionsDataSource = [
-        LanguageModel(id: 1, name: "Small"),
-        LanguageModel(id: 2, name: "Medium"),
-        LanguageModel(id: 3, name: "Large"),
-        LanguageModel(id: 4, name: "Combo Large")
-    ]
+//    private let dropDownOptionsDataSource = [
+//        LanguageModel(id: 1, name: "Small"),
+//        LanguageModel(id: 2, name: "Medium"),
+//        LanguageModel(id: 3, name: "Large"),
+//        LanguageModel(id: 4, name: "Combo Large")
+//    ]
     
 //    private var codeMenuAttributes = SwiftyMenuAttributes()
     
