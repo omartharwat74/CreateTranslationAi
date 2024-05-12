@@ -28,8 +28,9 @@ public func SCImage(named name: String) -> UIImage? {
 extension UIView {
     
      func addDashedBorder() {
+         let safeAreaWidth = (superview?.safeAreaLayoutGuide.layoutFrame.width)!
          let borderLayer = CAShapeLayer()
-         let viewRect = CGRect(x: 0, y: 0, width: (superview?.frame.width)! - 32, height: frame.size.height)
+         let viewRect = CGRect(x: 0, y: 0, width: safeAreaWidth - 32, height: frame.size.height)
 
         borderLayer.bounds = viewRect
         borderLayer.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
