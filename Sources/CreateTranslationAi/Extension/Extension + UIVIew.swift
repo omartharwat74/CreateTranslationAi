@@ -26,16 +26,22 @@ public func SCImage(named name: String) -> UIImage? {
 }
 
 extension UIView {
-    func addDashedBorder() {
-        let shapeLayer = CAShapeLayer()
-        shapeLayer.fillColor = UIColor.clear.cgColor
-        shapeLayer.strokeColor = UIColor(red: 0.341, green: 0.584, blue: 0.58, alpha: 1).cgColor
-        shapeLayer.lineWidth = 0.5
-        shapeLayer.lineJoin = .round
-        shapeLayer.lineDashPattern = [10, 5]
-        shapeLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: 25).cgPath
-        shapeLayer.frame = layer.bounds
-        self.layer.addSublayer(shapeLayer)
+    
+     func addDashedBorder() {
+         let borderLayer = CAShapeLayer()
+        let viewRect = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
+
+        borderLayer.bounds = viewRect
+        borderLayer.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
+        borderLayer.fillColor = UIColor.clear.cgColor
+        borderLayer.strokeColor = UIColor(red: 0.341, green: 0.584, blue: 0.58, alpha: 1).cgColor
+        borderLayer.lineWidth = 0.5
+        borderLayer.lineJoin = .round
+
+        borderLayer.lineDashPattern = [10, 5]
+        borderLayer.path = UIBezierPath(roundedRect: viewRect, cornerRadius: 25).cgPath
+
+        layer.addSublayer(borderLayer)
     }
 }
 
