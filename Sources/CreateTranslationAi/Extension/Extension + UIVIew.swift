@@ -47,18 +47,22 @@ extension UIView {
         shapeLayer.lineDashPattern = [10, 5]
         
         // Define the inset to adjust the position of the border
-        let inset: CGFloat = 0.5
-        let rect = bounds.insetBy(dx: inset, dy: inset)
+        let inset: CGFloat = 0.25
+        let rect = bounds
+        let path = UIBezierPath(roundedRect: rect, cornerRadius: 25)
         
-        // Use the rounded rect of the adjusted size
-        shapeLayer.path = UIBezierPath(roundedRect: rect, cornerRadius: 25).cgPath
+        // Adjust the corners of the rectangle to fit within the bounds
+        path.move(to: CGPoint(x: rect.minX + inset, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.maxX - inset, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.maxX - inset, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.minX + inset, y: rect.maxY))
+        path.close()
         
-        // Ensure the shape layer is clipped to the bounds of the view
-        shapeLayer.bounds = bounds
-        shapeLayer.position = CGPoint(x: bounds.midX, y: bounds.midY)
+        shapeLayer.path = path.cgPath
         
         self.layer.addSublayer(shapeLayer)
     }
+
 
 
 }
