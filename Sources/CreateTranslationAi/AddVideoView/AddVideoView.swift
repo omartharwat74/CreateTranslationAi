@@ -75,7 +75,17 @@ class AddVideoView: UIView {
             translateView.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.1).cgColor
         }
     }
-//    @IBOutlet weak var translateFromView: SwiftyMenu!
+    @IBOutlet weak var translateFromLabel: UILabel!{
+        didSet{
+            translateFromLabel.text = "Add spoken language in video:".localized
+        }
+    }
+    @IBOutlet weak var translateToLabel: UILabel!{
+        didSet{
+            translateToLabel.text = "Translate to:".localized
+        }
+    }
+    //    @IBOutlet weak var translateFromView: SwiftyMenu!
 //    @IBOutlet weak var translateToView: SwiftyMenu!
 //    
     
