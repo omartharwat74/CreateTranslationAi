@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "CreateTranslationAi",
-    defaultLocalization: "en",
+    defaultLocalization: "ar",
     platforms: [
         .iOS(.v16),
         .macOS(.v11)
