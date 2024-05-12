@@ -229,7 +229,7 @@
                             <buttonConfiguration key="configuration" style="plain" image="image 12" title="Get your translation"/>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="ULw-0o-eyv" secondAttribute="bottom" constant="16" id="3kE-89-Uev"/>
                         <constraint firstItem="HdT-uz-O0i" firstAttribute="top" secondItem="h67-Be-HES" secondAttribute="top" id="F8b-F6-fvJ"/>
