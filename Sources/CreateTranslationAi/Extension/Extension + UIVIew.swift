@@ -40,7 +40,7 @@ extension UIView {
     shapeLayer.lineWidth = 2
     shapeLayer.lineJoin = CAShapeLayerLineJoin.round
     shapeLayer.lineDashPattern = [6,3]
-    shapeLayer.path = UIBezierPath(roundedRect: shapeRect, cornerRadius: 5).cgPath
+    shapeLayer.path = UIBezierPath(roundedRect: shapeRect, cornerRadius: 25).cgPath
 
     self.layer.addSublayer(shapeLayer)
     }

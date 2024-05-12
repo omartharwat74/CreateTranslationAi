@@ -59,8 +59,8 @@ class AddVideoView: UIView {
     @IBOutlet weak var videoView: UIView!{
         didSet{
             videoView.layer.cornerRadius = 25
-            videoView.layer.borderWidth = 1
-            videoView.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.1).cgColor
+//            videoView.layer.borderWidth = 1
+//            videoView.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.1).cgColor
         }
     }
     @IBOutlet weak var videoImage: UIImageView!{
