@@ -122,7 +122,7 @@ class AddVideoView: UIView {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewVideoTapped))
         uploadStackView.addGestureRecognizer(tapGesture)
         uploadStackView.isUserInteractionEnabled = true
-        videoView.addDashedBorder(mainView: videoView.frame.width + 300)
+        videoView.addDashedBorder(mainView: videoView.frame.width + 32)
 //        translateFromView.items = dropDownOptionsDataSource
 //        codeMenuAttributes.textStyle = .value(color: .white, separator: " & ", font: .systemFont(ofSize: 14))
 //        codeMenuAttributes.placeHolderStyle = .value(text: "Please Select Language", textColor: .white)
