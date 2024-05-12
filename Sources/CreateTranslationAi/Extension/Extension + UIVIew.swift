@@ -29,7 +29,7 @@ extension UIView {
     
      func addDashedBorder() {
          let borderLayer = CAShapeLayer()
-        let viewRect = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
+        let viewRect = CGRect(x: 0, y: 0, width: 1000, height: frame.size.height)
 
         borderLayer.bounds = viewRect
         borderLayer.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
