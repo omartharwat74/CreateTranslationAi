@@ -21,7 +21,7 @@ let package = Package(
     targets: [
         .target(
             name: "CreateTranslationAi",
-            dependencies: [.product(name:"swiftymenu",package: "snapkit")],
+//            dependencies: [.product(name:"swiftymenu",package: "snapkit")],
             resources: [
                 .copy("Fonts/DINNextLTArabic-Bold-4.ttf"),
                 .copy("DINNextLTArabic-Medium-4.ttf"),
