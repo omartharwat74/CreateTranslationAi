@@ -8,7 +8,6 @@
 import UIKit
 import MobileCoreServices
 import Photos
-import SwiftyMenu
 
 class AddVideoView: UIView {
     
@@ -76,9 +75,9 @@ class AddVideoView: UIView {
             translateView.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.1).cgColor
         }
     }
-    @IBOutlet weak var translateFromView: SwiftyMenu!
-    @IBOutlet weak var translateToView: SwiftyMenu!
-    
+//    @IBOutlet weak var translateFromView: SwiftyMenu!
+//    @IBOutlet weak var translateToView: SwiftyMenu!
+//    
     
     private let dropDownOptionsDataSource = [
         LanguageModel(id: 1, name: "Small"),
@@ -87,7 +86,7 @@ class AddVideoView: UIView {
         LanguageModel(id: 4, name: "Combo Large")
     ]
     
-    private var codeMenuAttributes = SwiftyMenuAttributes()
+//    private var codeMenuAttributes = SwiftyMenuAttributes()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -115,11 +114,11 @@ class AddVideoView: UIView {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewVideoTapped))
         uploadStackView.addGestureRecognizer(tapGesture)
         uploadStackView.isUserInteractionEnabled = true
-        translateFromView.items = dropDownOptionsDataSource
-        codeMenuAttributes.textStyle = .value(color: .white, separator: " & ", font: .systemFont(ofSize: 14))
-        codeMenuAttributes.placeHolderStyle = .value(text: "Please Select Language", textColor: .white)
-        translateFromView.configure(with: codeMenuAttributes)
-        translateFromView.delegate = self
+//        translateFromView.items = dropDownOptionsDataSource
+//        codeMenuAttributes.textStyle = .value(color: .white, separator: " & ", font: .systemFont(ofSize: 14))
+//        codeMenuAttributes.placeHolderStyle = .value(text: "Please Select Language", textColor: .white)
+//        translateFromView.configure(with: codeMenuAttributes)
+//        translateFromView.delegate = self
     }
     
     @objc func viewVideoTapped() {
@@ -200,29 +199,29 @@ extension AddVideoView: UIImagePickerControllerDelegate, UINavigationControllerD
     }
 }
 
-extension AddVideoView: SwiftyMenuDelegate {
-    // Get selected option from SwiftyMenu
-    func swiftyMenu(_ swiftyMenu: SwiftyMenu, didSelectItem item: SwiftyMenuDisplayable, atIndex index: Int) {
-        print("Selected item: \(item), at index: \(index)")
-    }
-    
-    // SwiftyMenu drop down menu will expand
-    func swiftyMenu(willExpand swiftyMenu: SwiftyMenu) {
-        print("SwiftyMenu willExpand.")
-    }
-    
-    // SwiftyMenu drop down menu did expand
-    func swiftyMenu(didExpand swiftyMenu: SwiftyMenu) {
-        print("SwiftyMenu didExpand.")
-    }
-    
-    // SwiftyMenu drop down menu will collapse
-    func swiftyMenu(willCollapse swiftyMenu: SwiftyMenu) {
-        print("SwiftyMenu willCollapse.")
-    }
-    
-    // SwiftyMenu drop down menu did collapse
-    func swiftyMenu(didCollapse swiftyMenu: SwiftyMenu) {
-        print("SwiftyMenu didCollapse.")
-    }
-}
+//extension AddVideoView: SwiftyMenuDelegate {
+//    // Get selected option from SwiftyMenu
+//    func swiftyMenu(_ swiftyMenu: SwiftyMenu, didSelectItem item: SwiftyMenuDisplayable, atIndex index: Int) {
+//        print("Selected item: \(item), at index: \(index)")
+//    }
+//    
+//    // SwiftyMenu drop down menu will expand
+//    func swiftyMenu(willExpand swiftyMenu: SwiftyMenu) {
+//        print("SwiftyMenu willExpand.")
+//    }
+//    
+//    // SwiftyMenu drop down menu did expand
+//    func swiftyMenu(didExpand swiftyMenu: SwiftyMenu) {
+//        print("SwiftyMenu didExpand.")
+//    }
+//    
+//    // SwiftyMenu drop down menu will collapse
+//    func swiftyMenu(willCollapse swiftyMenu: SwiftyMenu) {
+//        print("SwiftyMenu willCollapse.")
+//    }
+//    
+//    // SwiftyMenu drop down menu did collapse
+//    func swiftyMenu(didCollapse swiftyMenu: SwiftyMenu) {
+//        print("SwiftyMenu didCollapse.")
+//    }
+//}
