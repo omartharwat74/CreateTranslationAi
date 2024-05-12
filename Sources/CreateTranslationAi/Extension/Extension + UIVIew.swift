@@ -27,7 +27,7 @@ extension UIView {
 
 extension UIView {
   func addDashedBorder() {
-    let color = UIColor.red.cgColor
+      let color = UIColor(red: 87, green: 149, blue: 148, alpha: 1).cgColor
 
     let shapeLayer:CAShapeLayer = CAShapeLayer()
     let frameSize = self.frame.size
