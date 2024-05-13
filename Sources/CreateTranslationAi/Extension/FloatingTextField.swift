@@ -182,13 +182,6 @@ class DropDownTextField: MGFloatingTextField {
         }
         return super.canPerformAction(action, withSender: sender)
     }
-    // Image view to display the selected item's image
-    private let itemImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.clipsToBounds = true
-        return imageView
-    }()
     
     //MARK: - Lifecycle -
     override func awakeFromNib() {
@@ -196,13 +189,6 @@ class DropDownTextField: MGFloatingTextField {
         self.setupDesign()
     }
     
-    private func updateSelectedItemImage() {
-        guard let selectedItem = self.selectedItem else {
-            itemImageView.image = nil
-            return
-        }
-        itemImageView.image = UIImage(named: selectedItem.image)
-    }
     
     private func setupDesign() {
         self.picker.delegate = self
@@ -210,14 +196,6 @@ class DropDownTextField: MGFloatingTextField {
         self.inputView?.clipsToBounds = true
         tintColor = UIColor.white
         self.addDoneButtonOnKeyboard()
-        let containerView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: frame.height))
-        containerView.addSubview(itemImageView)
-        itemImageView.frame = containerView.bounds
-        rightView = containerView
-        rightViewMode = .always
-        
-        // Set semantic content attribute to force right to left layout
-        self.semanticContentAttribute = .forceRightToLeft
     }
     
     
@@ -241,14 +219,12 @@ class DropDownTextField: MGFloatingTextField {
             if let item = self.items.first {
                 self.text = item.name
                 self.dropDownDelegate?.didSelect(item: item, for: self)
-                updateSelectedItemImage()
             }
             self.resignFirstResponder()
             return
         }
         self.text = selectedItem.name
         self.dropDownDelegate?.didSelect(item: selectedItem, for: self)
-        updateSelectedItemImage()
         self.resignFirstResponder()
     }
     
