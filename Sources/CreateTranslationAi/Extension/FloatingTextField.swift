@@ -17,16 +17,13 @@ class MGFloatingTextField: UITextField {
     
     //MARK: - Properties -
     var isPassword = true
-    var selectedBorderColor: UIColor = .clear
-    var normalBorderColor = UIColor.white.cgColor
+    var selectedBorderColor: UIColor =  UIColor(red: 1, green: 1, blue: 1, alpha: 0.1)
+    var normalBorderColor =  UIColor(red: 1, green: 1, blue: 1, alpha: 0.1).cgColor
     lazy var padding = (self.direction == .ltr) ? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0) : UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     var placeholderView: UIView?
     private var tempPlaceholder: String?
     private weak var timer: Timer?
     private var direction : Direction = .ltr
-//    = {
-//        return Language.isRTL() ? .rtl : .ltr
-//    }()
     @IBInspectable var leadingImage : UIImage? = nil {
             didSet{
                 guard let image = self.leadingImage else {return}
@@ -70,7 +67,7 @@ class MGFloatingTextField: UITextField {
 //        self.layer.cornerRadius = 10
 //        self.layer.borderWidth = 1
 //        self.layer.borderColor = UIColor.clear.cgColor
-        self.layer.cornerRadius = 58
+        self.layer.cornerRadius = 25
         self.layer.borderWidth = 0.5
         self.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.1).cgColor
         self.backgroundColor = .clear
