@@ -66,8 +66,8 @@ class MGFloatingTextField: UITextField {
         self.backgroundColor = .clear
         self.borderStyle = .none
         self.attributedPlaceholder = NSAttributedString(
-            string: self.placeholder ?? "",
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
+            string: self.placeholder ?? "jgnjngjtng",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.yellow]
         )
     }
     func handelPlaceholderView() {
@@ -76,7 +76,7 @@ class MGFloatingTextField: UITextField {
         let xPoint = self.direction == .ltr ? self.frame.minX + 15 : self.frame.maxX - 15 - 50
         let yPoint = self.frame.minY - 8
         self.placeholderView = UIView(frame: CGRect(x: xPoint, y: yPoint, width: 50, height: 20))
-        self.placeholderView?.backgroundColor = .clear
+        self.placeholderView?.backgroundColor = .red
     }
     func addDesign() {
         self.layer.borderColor = self.selectedBorderColor.cgColor
