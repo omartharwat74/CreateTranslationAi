@@ -187,6 +187,10 @@ class DropDownTextField: MGFloatingTextField {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setupDesign()
+        if let firstItem = items.first {
+            self.selectedItem = firstItem
+            self.text = firstItem.name
+        }
     }
     
     
@@ -238,24 +242,6 @@ extension DropDownTextField: UIPickerViewDelegate, UIPickerViewDataSource {
         self.items = self.dropDownDelegate?.dropDownList(for: self) ?? []
         return self.items.count
     }
-    
-//    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-//        let itemView = UIView(frame: CGRect(x: 0, y: 0, width: pickerView.bounds.width, height: 40))
-//
-//        let label = UILabel(frame: CGRect(x: 0, y: 0, width: pickerView.bounds.width - 40, height: 40)) // Adjust the frame size and position as needed
-//        label.textColor = UIColor.black // Customize text color as needed
-//        label.textAlignment = .right // Align the text to the right
-//        label.text = self.items[row].name
-//        itemView.addSubview(label)
-//
-//        let imageView = UIImageView(frame: CGRect(x: pickerView.bounds.width - 40, y: 0, width: 40, height: 40)) // Adjust the frame size as needed
-//        imageView.contentMode = .scaleAspectFit
-//        imageView.image = UIImage(named: self.items[row].image )
-//        itemView.addSubview(imageView)
-//
-//        return itemView
-//    }
-
 
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         return NSAttributedString(string: self.items[row].name, attributes: [NSAttributedString.Key.foregroundColor:  UIColor(red: 0.09, green: 0.09, blue: 0.09, alpha: 1)])
