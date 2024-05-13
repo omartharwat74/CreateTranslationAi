@@ -189,7 +189,7 @@ class DropDownTextField: MGFloatingTextField {
         self.setupDesign()
         if let firstItem = items.first {
             self.selectedItem = firstItem
-            self.text = firstItem.name
+            self.doneButtonAction() // Call doneButtonAction to update the text field
         }
     }
     
