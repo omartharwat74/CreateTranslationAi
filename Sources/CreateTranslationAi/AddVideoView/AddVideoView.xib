@@ -72,10 +72,10 @@
                     <rect key="frame" x="0.0" y="147" width="393" height="588"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mx3-qL-Slj">
-                            <rect key="frame" x="0.0" y="0.0" width="393" height="579"/>
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="522"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="12f-nJ-Dwq">
-                                    <rect key="frame" x="16" y="24" width="361" height="555"/>
+                                    <rect key="frame" x="16" y="24" width="361" height="498"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select the video from your files" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WgJ-5d-lQY">
                                             <rect key="frame" x="0.0" y="0.0" width="361" height="26"/>
@@ -132,10 +132,10 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o9d-PS-Ugg">
-                                            <rect key="frame" x="0.0" y="294" width="361" height="261"/>
+                                            <rect key="frame" x="0.0" y="294" width="361" height="204"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Xys-el-1t9">
-                                                    <rect key="frame" x="12" y="16" width="337" height="229"/>
+                                                    <rect key="frame" x="12" y="16" width="337" height="172"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add spoken language in video:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nr7-dO-aaw">
                                                             <rect key="frame" x="0.0" y="0.0" width="337" height="21"/>
@@ -162,15 +162,8 @@
                                                                 <userDefinedRuntimeAttribute type="image" keyPath="trailingNormalImage" value="down"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </textField>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="849-2X-kmK">
-                                                            <rect key="frame" x="0.0" y="94" width="337" height="41"/>
-                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="41" id="JVT-PG-KJV"/>
-                                                            </constraints>
-                                                        </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Translate to:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kYk-Cz-PZi">
-                                                            <rect key="frame" x="0.0" y="151" width="337" height="21"/>
+                                                            <rect key="frame" x="0.0" y="94" width="337" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="21" id="4Yb-di-abL"/>
                                                             </constraints>
@@ -181,12 +174,13 @@
                                                                 <userDefinedRuntimeAttribute type="string" keyPath="translationKey" value="Translate to:"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </label>
-                                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d8H-RW-65n" customClass="DropDownTextField" customModule="CreateTranslationAi">
-                                                            <rect key="frame" x="0.0" y="188" width="337" height="41"/>
+                                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d8H-RW-65n" customClass="DropDownTextField" customModule="CreateTranslationAi">
+                                                            <rect key="frame" x="0.0" y="131" width="337" height="41"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="41" id="hP1-UV-3d0"/>
                                                             </constraints>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
                                                             <userDefinedRuntimeAttributes>

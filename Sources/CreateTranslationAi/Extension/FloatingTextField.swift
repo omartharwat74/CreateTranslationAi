@@ -155,24 +155,12 @@ extension MGFloatingTextField {
     func setTrailing(_ image: UIImage?, imageWidth: CGFloat, padding: CGFloat, notSecureImage: UIImage?) {
         secureButton.setTitle(nil, for: .normal)
         secureButton.setImage(image, for: .normal)
-        if isPassword {
-            secureButton.setImage(notSecureImage, for: .selected)
-            secureButton.addTarget(self, action: #selector(self.toggleSecure), for: .touchUpInside)
-        }
         secureButton.imageView?.contentMode = .scaleAspectFit
         let containerView = UIView(frame: CGRect(x: 0, y: 0, width: imageWidth + 2 * padding, height: frame.height))
         containerView.addSubview(secureButton)
         secureButton.frame = containerView.frame
-        
-        //        if self.direction == .rtl {
         leftView = containerView
         leftViewMode = .always
-        //        }else {
-        //            rightView = containerView
-        //            rightViewMode = .always
-        //        }
-        
-        
         self.padding = (self.direction == .rtl) ? UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 50) : UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 15)
     }
     func sideImage(_ image: UIImage?, imageWidth: CGFloat, padding: CGFloat) {
