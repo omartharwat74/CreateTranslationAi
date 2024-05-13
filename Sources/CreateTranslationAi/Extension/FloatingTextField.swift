@@ -199,7 +199,7 @@ class DropDownTextField: MGFloatingTextField {
     private func addDoneButtonOnKeyboard(){
         let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
         doneToolbar.barStyle = .default
-        doneToolbar.tintColor = UIColor(red: 0.09, green: 0.09, blue: 0.09, alpha: 1)
+        doneToolbar.tintColor = UIColor.white
         
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let done: UIBarButtonItem = UIBarButtonItem(title: "Done".localized, style: .done, target: self, action: #selector(self.doneButtonAction))
@@ -241,7 +241,7 @@ extension DropDownTextField: UIPickerViewDelegate, UIPickerViewDataSource {
         let label = UILabel(frame: CGRect(x: 10, y: 0, width: pickerViewWidth - 60, height: 40))
         label.text = self.items[row].name
         label.textAlignment = .right
-        label.textColor = UIColor.white
+        label.textColor = UIColor(red: 0.09, green: 0.09, blue: 0.09, alpha: 1)
         rowView.addSubview(label)
         
         let imageView = UIImageView(frame: CGRect(x: pickerViewWidth - 40, y: 5, width: 30, height: 30))
