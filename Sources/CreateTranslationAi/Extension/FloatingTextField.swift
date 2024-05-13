@@ -237,10 +237,24 @@ extension DropDownTextField: UIPickerViewDelegate, UIPickerViewDataSource {
         self.items = self.dropDownDelegate?.dropDownList(for: self) ?? []
         return self.items.count
     }
-
-    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        return NSAttributedString(string: self.items[row].name, attributes: [NSAttributedString.Key.foregroundColor:  UIColor(red: 0.09, green: 0.09, blue: 0.09, alpha: 1)])
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let pickerViewWidth = pickerView.frame.width
+        let rowView = UIView(frame: CGRect(x: 0, y: 0, width: pickerViewWidth, height: 40))
+        
+        let imageView = UIImageView(frame: CGRect(x: 10, y: 5, width: 30, height: 30))
+        imageView.image = UIImage(named: self.items[row].image)
+        rowView.addSubview(imageView)
+        
+        let label = UILabel(frame: CGRect(x: 50, y: 0, width: pickerViewWidth - 60, height: 40))
+        label.text = self.items[row].name
+        label.textColor = UIColor(red: 0.09, green: 0.09, blue: 0.09, alpha: 1)
+        rowView.addSubview(label)
+        
+        return rowView
     }
+//    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+//        return NSAttributedString(string: self.items[row].name, attributes: [NSAttributedString.Key.foregroundColor:  UIColor(red: 0.09, green: 0.09, blue: 0.09, alpha: 1)])
+//    }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         guard row < self.items.count else {return}
         self.selectedItem = self.items[row]
