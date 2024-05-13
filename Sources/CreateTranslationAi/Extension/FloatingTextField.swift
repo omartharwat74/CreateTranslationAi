@@ -155,7 +155,7 @@ class DropDownTextField: MGFloatingTextField {
     
     
     private func setupImage() {
-        selectedImageView = UIImageView(frame: CGRect(x: 50, y: 0, width: 30, height: 30))
+        selectedImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         selectedImageView.contentMode = .scaleAspectFit
         let containerView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         containerView.addSubview(selectedImageView)
