@@ -220,11 +220,7 @@ class DropDownTextField: MGFloatingTextField {
     
     //MARK: - Properties -
     private lazy var picker = UIPickerView()
-     var items: [DropDownItem] = []{
-         didSet {
-             self.reloadPickerData()
-         }
-     }
+     var items: [DropDownItem] = []
      var selectedItem: DropDownItem?
     var dropDownDelegate: DropDownTextFieldDelegate?
     open override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
@@ -247,18 +243,8 @@ class DropDownTextField: MGFloatingTextField {
         self.inputView?.clipsToBounds = true
         tintColor = UIColor.white
         self.addDoneButtonOnKeyboard()
-        self.reloadPickerData() // Reload picker data initially
     }
     
-    private func reloadPickerData() {
-        self.picker.reloadAllComponents()
-        self.selectFirstItem() // Call selectFirstItem() after reloading data
-    }
-    private func selectFirstItem() {
-        guard let firstItem = self.items.first else { return }
-        self.selectedItem = firstItem
-        self.text = firstItem.name
-    }
     
     
     private func addDoneButtonOnKeyboard(){
