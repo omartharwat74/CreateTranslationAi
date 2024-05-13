@@ -242,7 +242,7 @@ extension DropDownTextField: UIPickerViewDelegate, UIPickerViewDataSource {
         let rowView = UIView(frame: CGRect(x: 0, y: 0, width: pickerViewWidth, height: 40))
         
         let imageView = UIImageView(frame: CGRect(x: 10, y: 5, width: 30, height: 30))
-        imageView.image = UIImage(named: self.items[row].image)
+        imageView.image = SCImage(named: self.items[row].image)
         rowView.addSubview(imageView)
         
         let label = UILabel(frame: CGRect(x: 50, y: 0, width: pickerViewWidth - 60, height: 40))
