@@ -157,6 +157,9 @@
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="image" keyPath="leadingImage" value="arrow.down" catalog="system"/>
+                                                            </userDefinedRuntimeAttributes>
                                                         </textField>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="849-2X-kmK">
                                                             <rect key="frame" x="0.0" y="94" width="337" height="41"/>
@@ -275,6 +278,7 @@
     </objects>
     <resources>
         <image name="Upload" width="119" height="116"/>
+        <image name="arrow.down" catalog="system" width="118" height="128"/>
         <image name="arrow.right" catalog="system" width="128" height="95"/>
         <image name="image 12" width="16" height="17"/>
     </resources>
