@@ -66,7 +66,7 @@ class MGFloatingTextField: UITextField {
         self.backgroundColor = .clear
         self.borderStyle = .none
         self.attributedPlaceholder = NSAttributedString(
-            string: self.placeholder ?? "",
+            string: self.placeholder ?? "please choose language".localized,
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
         )
     }
@@ -174,14 +174,7 @@ class DropDownTextField: MGFloatingTextField {
     //MARK: - Properties -
     private lazy var picker = UIPickerView()
     var items: [DropDownItem] = []
-    var selectedItem: DropDownItem? {
-        didSet {
-            if let selectedItem = self.selectedItem {
-                self.text = selectedItem.name
-            }
-            self.updatePlaceholder()
-        }
-    }
+    var selectedItem: DropDownItem?
     var dropDownDelegate: DropDownTextFieldDelegate?
     open override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         if action == #selector(UIResponderStandardEditActions.paste(_:)) || action == #selector(UIResponderStandardEditActions.cut(_:)) || action == #selector(UIResponderStandardEditActions.delete(_:)) || action == #selector(UIResponderStandardEditActions.select(_:)) {
@@ -194,7 +187,6 @@ class DropDownTextField: MGFloatingTextField {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setupDesign()
-        self.updatePlaceholder()
     }
     
     
@@ -204,15 +196,6 @@ class DropDownTextField: MGFloatingTextField {
         self.inputView?.clipsToBounds = true
         tintColor = UIColor.white
         self.addDoneButtonOnKeyboard()
-    }
-    
-    private func updatePlaceholder() {
-        if let selectedItem = self.selectedItem {
-            self.attributedPlaceholder = NSAttributedString(string: "", attributes: [NSAttributedString.Key.foregroundColor: UIColor.clear])
-            self.placeholder = selectedItem.name
-        } else {
-            self.attributedPlaceholder = NSAttributedString(string: self.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-        }
     }
     
     
