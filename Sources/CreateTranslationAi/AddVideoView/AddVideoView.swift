@@ -83,16 +83,27 @@ class AddVideoView: UIView {
             translateToLabel.text = "Translate to:".localized
         }
     }
+    @IBOutlet weak var translateFromTF: DropDownTextField!
+    let fakeDropDownItems: [FakeDropDownItem] = [
+        FakeDropDownItem(name: "Item 1", value: "Value 1"),
+        FakeDropDownItem(name: "Item 2", value: "Value 2"),
+        FakeDropDownItem(name: "Item 3", value: "Value 3"),
+        FakeDropDownItem(name: "Item 4", value: "Value 4"),
+        // Add more items as needed
+    ]
     //    @IBOutlet weak var translateFromView: SwiftyMenu!
 //    @IBOutlet weak var translateToView: SwiftyMenu!
 //    
     
-//    private let dropDownOptionsDataSource = [
-//        LanguageModel(id: 1, name: "Small"),
+//    let dropDownModel:[DropDownItem] = [
+//        dropDownModel(id:"",name:"",value:"")
+//    ]
+//        DropDownItem
+//        (id: 1, name: "Small"),
 //        LanguageModel(id: 2, name: "Medium"),
 //        LanguageModel(id: 3, name: "Large"),
 //        LanguageModel(id: 4, name: "Combo Large")
-//    ]
+    
     
 //    private var codeMenuAttributes = SwiftyMenuAttributes()
     
@@ -123,6 +134,7 @@ class AddVideoView: UIView {
         uploadStackView.addGestureRecognizer(tapGesture)
         uploadStackView.isUserInteractionEnabled = true
         videoView.addDashedBorder()
+        translateFromTF.dropDownDelegate = self
 //        translateFromView.items = dropDownOptionsDataSource
 //        codeMenuAttributes.textStyle = .value(color: .white, separator: " & ", font: .systemFont(ofSize: 14))
 //        codeMenuAttributes.placeHolderStyle = .value(text: "Please Select Language", textColor: .white)
@@ -207,3 +219,21 @@ extension AddVideoView: UIImagePickerControllerDelegate, UINavigationControllerD
         picker.dismiss(animated: true)
     }
 }
+
+extension AddVideoView : DropDownTextFieldDelegate  {
+    func dropDownList(for textField: UITextField) -> [any DropDownItem] {
+        return fakeDropDownItems
+    }
+    
+    func didSelect(item: any DropDownItem, for textField: UITextField) {
+       print("select\(item)")
+    }
+}
+
+struct FakeDropDownItem: DropDownItem {
+    var id: String?
+    var name: String
+    var value: String
+}
+
+
