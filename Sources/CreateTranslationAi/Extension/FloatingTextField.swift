@@ -142,7 +142,7 @@ class DropDownTextField: MGFloatingTextField {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setupDesign()
-        self.addSelectedImageView()
+//        self.addSelectedImageView()
         setupImage()
     }
     
@@ -161,20 +161,18 @@ class DropDownTextField: MGFloatingTextField {
         }
     
     private func setupImage() {
-        selectedImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        let imageWidth: CGFloat = 30
+        let padding: CGFloat = 15
+        
+        selectedImageView = UIImageView(frame: CGRect(x: padding, y: 0, width: imageWidth, height: 30))
         selectedImageView.contentMode = .scaleAspectFit
-        let containerView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        
+        let containerView = UIView(frame: CGRect(x: 0, y: 0, width: imageWidth + padding, height: 30))
         containerView.addSubview(selectedImageView)
-        selectedImageView.frame = containerView.frame
+//        selectedImageView.frame = containerView.frame
         rightView = containerView
         rightViewMode = .always
-        self.padding = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 50)
-//        self.selectedImageView.image = SCImage(named: "a")
     }
-    
-
-    
-
     
     private func setupDesign() {
         self.picker.delegate = self
@@ -205,12 +203,14 @@ class DropDownTextField: MGFloatingTextField {
             if let item = self.items.first {
                 self.text = item.name
                 self.dropDownDelegate?.didSelect(item: item, for: self)
+                updateSelectedImage()
             }
             self.resignFirstResponder()
             return
         }
         self.text = selectedItem.name
         self.dropDownDelegate?.didSelect(item: selectedItem, for: self)
+        updateSelectedImage()
         self.resignFirstResponder()
     }
     
@@ -244,6 +244,6 @@ extension DropDownTextField: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         guard row < self.items.count else {return}
         self.selectedItem = self.items[row]
-        self.updateSelectedImage()
+//        self.updateSelectedImage()
     }
 }
