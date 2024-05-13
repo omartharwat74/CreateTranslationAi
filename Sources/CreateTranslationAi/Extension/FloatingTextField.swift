@@ -67,13 +67,16 @@ class MGFloatingTextField: UITextField {
     //MARK:- Design Methods -
     private func initialConfiguration() {
         self.delegate = self
-        self.layer.cornerRadius = 10
-        self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.clear.cgColor
+//        self.layer.cornerRadius = 10
+//        self.layer.borderWidth = 1
+//        self.layer.borderColor = UIColor.clear.cgColor
+        self.layer.cornerRadius = 58
+        self.layer.borderWidth = 0.5
+        self.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.1).cgColor
         self.backgroundColor = .clear
         self.borderStyle = .none
         self.attributedPlaceholder = NSAttributedString(
-            string: self.placeholder ?? "Translate from".localized,
+            string: self.placeholder ?? "",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
         )
     }

@@ -15,13 +15,9 @@ let package = Package(
             name: "CreateTranslationAi",
             targets: ["CreateTranslationAi"]),
     ],
-//    dependencies: [
-//        .package(url: "https://github.com/KarimEbrahemAbdelaziz/SwiftyMenu", from: "1.0.1")
-//    ],
     targets: [
         .target(
             name: "CreateTranslationAi",
-//            dependencies: ["SwiftyMenu"],
             resources: [
                 .copy("Fonts/DINNextLTArabic-Bold-4.ttf"),
                 .copy("DINNextLTArabic-Medium-4.ttf"),
