@@ -74,7 +74,7 @@ class MGFloatingTextField: UITextField {
         self.borderStyle = .none
         self.attributedPlaceholder = NSAttributedString(
             string: self.placeholder ?? "",
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
         )
     }
     func handelPlaceholderView() {
