@@ -162,7 +162,7 @@ class DropDownTextField: MGFloatingTextField {
         selectedImageView.frame = containerView.frame
         rightView = containerView
         rightViewMode = .always
-        self.padding = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 200)
+        self.padding = UIEdgeInsets(top: 0, left: 200, bottom: 0, right: 30)
     }
     
     private func setupDesign() {
