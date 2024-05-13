@@ -148,7 +148,7 @@
                                                                 <userDefinedRuntimeAttribute type="string" keyPath="translationKey" value="Add spoken language in video:"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </label>
-                                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wbF-yt-CBw" customClass="DropDownTextField" customModule="CreateTranslationAi">
+                                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wbF-yt-CBw" customClass="DropDownTextField" customModule="CreateTranslationAi">
                                                             <rect key="frame" x="0.0" y="37" width="337" height="41"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
