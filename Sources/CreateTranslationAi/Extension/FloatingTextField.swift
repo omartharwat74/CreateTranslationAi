@@ -40,7 +40,7 @@ class MGFloatingTextField: UITextField {
             self.setTrailing(trailingNormalImage, imageWidth: 25, padding: 15, notSecureImage: trailingSelectedImage)
         }
     }
-    let secureButton = UIButton()
+    var trailingImage = UIImageView()
     var errorMessageLabel: UILabel?
     
     
@@ -151,11 +151,11 @@ extension MGFloatingTextField: UITextFieldDelegate {
 extension MGFloatingTextField {
     func setTrailing(_ image: UIImage?, imageWidth: CGFloat, padding: CGFloat, notSecureImage: UIImage?) {
 //        secureButton.setTitle(nil, for: .normal)
-        secureButton.setImage(image, for: .normal)
-        secureButton.imageView?.contentMode = .scaleAspectFit
+        trailingImage.image = image!//.setImage(image, for: .normal)
+        trailingImage.contentMode = .scaleAspectFit
         let containerView = UIView(frame: CGRect(x: 0, y: 0, width: imageWidth + 2 * padding, height: frame.height))
-        containerView.addSubview(secureButton)
-        secureButton.frame = containerView.frame
+        containerView.addSubview(trailingImage)
+        trailingImage.frame = containerView.frame
         leftView = containerView
         leftViewMode = .always
         self.padding = (self.direction == .rtl) ? UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 50) : UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 15)
