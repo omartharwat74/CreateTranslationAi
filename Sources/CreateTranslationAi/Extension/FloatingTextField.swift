@@ -66,8 +66,8 @@ class MGFloatingTextField: UITextField {
         self.backgroundColor = .clear
         self.borderStyle = .none
         self.attributedPlaceholder = NSAttributedString(
-            string: self.placeholder ?? "jgnjngjtng",
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.yellow]
+            string: self.placeholder ?? "",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
         )
     }
     func handelPlaceholderView() {
@@ -76,7 +76,7 @@ class MGFloatingTextField: UITextField {
         let xPoint = self.direction == .ltr ? self.frame.minX + 15 : self.frame.maxX - 15 - 50
         let yPoint = self.frame.minY - 8
         self.placeholderView = UIView(frame: CGRect(x: xPoint, y: yPoint, width: 50, height: 20))
-        self.placeholderView?.backgroundColor = .red
+        self.placeholderView?.backgroundColor = .clear
     }
     func addDesign() {
         self.layer.borderColor = self.selectedBorderColor.cgColor
@@ -174,7 +174,14 @@ class DropDownTextField: MGFloatingTextField {
     //MARK: - Properties -
     private lazy var picker = UIPickerView()
     var items: [DropDownItem] = []
-    var selectedItem: DropDownItem?
+    var selectedItem: DropDownItem? {
+        didSet {
+            if let selectedItem = self.selectedItem {
+                self.text = selectedItem.name
+            }
+            self.updatePlaceholder()
+        }
+    }
     var dropDownDelegate: DropDownTextFieldDelegate?
     open override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         if action == #selector(UIResponderStandardEditActions.paste(_:)) || action == #selector(UIResponderStandardEditActions.cut(_:)) || action == #selector(UIResponderStandardEditActions.delete(_:)) || action == #selector(UIResponderStandardEditActions.select(_:)) {
@@ -187,6 +194,7 @@ class DropDownTextField: MGFloatingTextField {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setupDesign()
+        self.updatePlaceholder()
     }
     
     
@@ -198,6 +206,14 @@ class DropDownTextField: MGFloatingTextField {
         self.addDoneButtonOnKeyboard()
     }
     
+    private func updatePlaceholder() {
+        if let selectedItem = self.selectedItem {
+            self.attributedPlaceholder = NSAttributedString(string: "", attributes: [NSAttributedString.Key.foregroundColor: UIColor.clear])
+            self.placeholder = selectedItem.name
+        } else {
+            self.attributedPlaceholder = NSAttributedString(string: self.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        }
+    }
     
     
     private func addDoneButtonOnKeyboard(){
