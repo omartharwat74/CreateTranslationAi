@@ -60,6 +60,7 @@ class MGFloatingTextField: UITextField {
         super.awakeFromNib()
         self.initialConfiguration()
     }
+
     
     //MARK:- Design Methods -
     private func initialConfiguration() {
@@ -68,7 +69,7 @@ class MGFloatingTextField: UITextField {
 //        self.layer.borderWidth = 1
 //        self.layer.borderColor = UIColor.clear.cgColor
         self.layer.cornerRadius = 25
-        self.layer.borderWidth = 0.5
+        self.layer.borderWidth = 1
         self.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.1).cgColor
         self.backgroundColor = .clear
         self.borderStyle = .none
@@ -219,8 +220,8 @@ class DropDownTextField: MGFloatingTextField {
     
     //MARK: - Properties -
     private lazy var picker = UIPickerView()
-    private var items: [DropDownItem] = []
-    private var selectedItem: DropDownItem?
+     var items: [DropDownItem] = []
+     var selectedItem: DropDownItem?
     var dropDownDelegate: DropDownTextFieldDelegate?
     open override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         if action == #selector(UIResponderStandardEditActions.paste(_:)) || action == #selector(UIResponderStandardEditActions.cut(_:)) || action == #selector(UIResponderStandardEditActions.delete(_:)) || action == #selector(UIResponderStandardEditActions.select(_:)) {

@@ -120,7 +120,12 @@ class AddVideoView: UIView {
         uploadStackView.isUserInteractionEnabled = true
         videoView.addDashedBorder()
         translateFromTF.dropDownDelegate = self
-        translateFromTF.placeholder = "Translate from".localized
+       
+        guard let firstItem = translateFromTF.items.first else { return }
+        translateFromTF.selectedItem = firstItem
+        translateFromTF.text = firstItem.name
+        
+        //translateFromTF.placeholder = "Translate from".localized
     }
     
     @objc func viewVideoTapped() {
