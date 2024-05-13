@@ -182,12 +182,6 @@ class DropDownTextField: MGFloatingTextField {
         }
         return super.canPerformAction(action, withSender: sender)
     }
-    private let itemImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.clipsToBounds = true
-        return imageView
-    }()
     
     //MARK: - Lifecycle -
     override func awakeFromNib() {
@@ -202,22 +196,7 @@ class DropDownTextField: MGFloatingTextField {
         self.inputView?.clipsToBounds = true
         tintColor = UIColor.white
         self.addDoneButtonOnKeyboard()
-        let containerView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: frame.height))
-        containerView.addSubview(itemImageView)
-        itemImageView.frame = containerView.bounds
-        rightView = containerView
-        rightViewMode = .always
-        self.semanticContentAttribute = .forceRightToLeft
     }
-    // Function to update the selected item's image
-    private func updateSelectedItemImage() {
-        guard let selectedItem = self.selectedItem else {
-            itemImageView.image = nil
-            return
-        }
-        itemImageView.image = UIImage(named: selectedItem.image)
-    }
-    
     
     
     private func addDoneButtonOnKeyboard(){
@@ -240,14 +219,12 @@ class DropDownTextField: MGFloatingTextField {
             if let item = self.items.first {
                 self.text = item.name
                 self.dropDownDelegate?.didSelect(item: item, for: self)
-                updateSelectedItemImage()
             }
             self.resignFirstResponder()
             return
         }
         self.text = selectedItem.name
         self.dropDownDelegate?.didSelect(item: selectedItem, for: self)
-        updateSelectedItemImage()
         self.resignFirstResponder()
     }
     
@@ -264,11 +241,11 @@ extension DropDownTextField: UIPickerViewDelegate, UIPickerViewDataSource {
         let pickerViewWidth = pickerView.frame.width
         let rowView = UIView(frame: CGRect(x: 0, y: 0, width: pickerViewWidth, height: 40))
         
-        let imageView = UIImageView(frame: CGRect(x: 50, y: 5, width: 30, height: 30))
+        let imageView = UIImageView(frame: CGRect(x: 10, y: 5, width: 30, height: 30))
         imageView.image = SCImage(named: self.items[row].image)
         rowView.addSubview(imageView)
         
-        let label = UILabel(frame: CGRect(x: 10, y: 0, width: pickerViewWidth - 60, height: 40))
+        let label = UILabel(frame: CGRect(x: 50, y: 0, width: pickerViewWidth - 60, height: 40))
         label.text = self.items[row].name
         label.textAlignment = .right
         label.textColor = UIColor(red: 0.09, green: 0.09, blue: 0.09, alpha: 1)
