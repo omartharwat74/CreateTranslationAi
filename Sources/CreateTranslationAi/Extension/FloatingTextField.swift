@@ -205,8 +205,9 @@ class DropDownTextField: MGFloatingTextField {
         let containerView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: frame.height))
         containerView.addSubview(itemImageView)
         itemImageView.frame = containerView.bounds
-        leftView = containerView
-        leftViewMode = .always
+        rightView = containerView
+        rightViewMode = .always
+        self.semanticContentAttribute = .forceRightToLeft
     }
     // Function to update the selected item's image
     private func updateSelectedItemImage() {
