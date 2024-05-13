@@ -165,15 +165,15 @@ extension MGFloatingTextField {
         secureButton.frame = containerView.frame
         
 //        if self.direction == .rtl {
-//            leftView = containerView
-//            leftViewMode = .always
+            leftView = containerView
+            leftViewMode = .always
 //        }else {
-            rightView = containerView
-            rightViewMode = .always
+//            rightView = containerView
+//            rightViewMode = .always
 //        }
         
         
-        self.padding = (self.direction == .ltr) ? UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 50) : UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 15)
+        self.padding = (self.direction == .rtl) ? UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 50) : UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 15)
     }
     func sideImage(_ image: UIImage?, imageWidth: CGFloat, padding: CGFloat) {
         let imageView = UIImageView(image: image)
