@@ -156,20 +156,19 @@ class DropDownTextField: MGFloatingTextField {
     }
     
     private func updateSelectedImage() {
-        guard let selectedItem = self.selectedItem else {
-            self.selectedImageView.image = nil
-            return
-        }
-        // Make sure the image name is correct
-        if let image = SCImage(named: selectedItem.image) {
-            self.selectedImageView.image = image
-        } else {
-            // If the image name is incorrect or image doesn't exist, set to nil
-            self.selectedImageView.image = nil
-        }
+        // Set a static image for testing
+        self.selectedImageView.image = SCImage(named: "a")
     }
+
+//    private func updateSelectedImage() {
+//        guard let selectedItem = self.selectedItem else {
+//            self.selectedImageView.image = nil
+//            return
+//        }
+//        self.selectedImageView.image = SCImage(named: selectedItem.image)
+//    }
     
-    
+
     
     private func setupDesign() {
         self.picker.delegate = self
