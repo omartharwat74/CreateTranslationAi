@@ -23,7 +23,7 @@ class MGFloatingTextField: UITextField {
     var placeholderView: UIView?
     private var tempPlaceholder: String?
     private weak var timer: Timer?
-    private var direction : Direction = .rtl
+    private var direction : Direction = .ltr
 //    = {
 //        return Language.isRTL() ? .rtl : .ltr
 //    }()
@@ -73,7 +73,7 @@ class MGFloatingTextField: UITextField {
         self.backgroundColor = .clear
         self.borderStyle = .none
         self.attributedPlaceholder = NSAttributedString(
-            string: self.placeholder ?? "",
+            string: self.placeholder ?? "Translate from".localized,
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
         )
     }
@@ -85,23 +85,6 @@ class MGFloatingTextField: UITextField {
         self.placeholderView = UIView(frame: CGRect(x: xPoint, y: yPoint, width: 50, height: 20))
         self.placeholderView?.backgroundColor = .clear
     }
-//    func createLabelView() {
-//        handelPlaceholderView()
-//        guard let pHolder = self.placeholder else {return}
-//        let width = pHolder.width(withConstrainedHeight: 16, font: UIFont(name: "Cairo-Regular", size: 15)!)
-//        let label = UILabel(frame: CGRect(x: 15, y: 0, width: width, height: 16))
-//        label.text = self.placeholder
-//        label.textColor = self.selectedBorderColor
-//        label.font = UIFont(name: "Cairo-Regular", size: 15)
-//        self.placeholderView?.addSubview(label)
-//        guard let _ = self.placeholderView else { return }
-//
-//        UIView.transition(with: self.superview!, duration: 0.2, options: .transitionCrossDissolve, animations: {
-//                self.superview!.addSubview(self.placeholderView!)
-//            self.placeholderView?.backgroundColor = Theme.colors.mainBackgroundColor
-//                self.superview!.bringSubviewToFront(self.placeholderView!)
-//            }, completion: nil)
-//    }
     func addDesign() {
         self.layer.borderColor = self.selectedBorderColor.cgColor
 //        self.createLabelView()

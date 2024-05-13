@@ -87,27 +87,10 @@ class AddVideoView: UIView {
     
     
     let fakeDropDownItems: [FakeDropDownItem] = [
-        FakeDropDownItem(name: "Item 1", value: "Value 1"),
-        FakeDropDownItem(name: "Item 2", value: "Value 2"),
-        FakeDropDownItem(name: "Item 3", value: "Value 3"),
-        FakeDropDownItem(name: "Item 4", value: "Value 4"),
-        // Add more items as needed
+        FakeDropDownItem(name: "Medium", value: "Value 1"),
+        FakeDropDownItem(name: "Large", value: "Value 2"),
+        FakeDropDownItem(name: "Combo Large", value: "Value 3"),
     ]
-    //    @IBOutlet weak var translateFromView: SwiftyMenu!
-//    @IBOutlet weak var translateToView: SwiftyMenu!
-//    
-    
-//    let dropDownModel:[DropDownItem] = [
-//        dropDownModel(id:"",name:"",value:"")
-//    ]
-//        DropDownItem
-//        (id: 1, name: "Small"),
-//        LanguageModel(id: 2, name: "Medium"),
-//        LanguageModel(id: 3, name: "Large"),
-//        LanguageModel(id: 4, name: "Combo Large")
-    
-    
-//    private var codeMenuAttributes = SwiftyMenuAttributes()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -137,12 +120,7 @@ class AddVideoView: UIView {
         uploadStackView.isUserInteractionEnabled = true
         videoView.addDashedBorder()
         translateFromTF.dropDownDelegate = self
-        translateFromTF.placeholder = "Translate from".localized
-//        translateFromView.items = dropDownOptionsDataSource
-//        codeMenuAttributes.textStyle = .value(color: .white, separator: " & ", font: .systemFont(ofSize: 14))
-//        codeMenuAttributes.placeHolderStyle = .value(text: "Please Select Language", textColor: .white)
-//        translateFromView.configure(with: codeMenuAttributes)
-//        translateFromView.delegate = self
+//        translateFromTF.placeholder = "Translate from".localized
     }
     
     @objc func viewVideoTapped() {
@@ -172,7 +150,7 @@ extension AddVideoView: UIImagePickerControllerDelegate, UINavigationControllerD
             fatalError("Unhandled case.")
         }
     }
-
+    
     func showImagePicker() {
         DispatchQueue.main.async {
             let imagePicker = UIImagePickerController()
@@ -187,19 +165,17 @@ extension AddVideoView: UIImagePickerControllerDelegate, UINavigationControllerD
             }
         }
     }
-
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true)
-
+        
         guard let mediaType = info[.mediaType] as? String else {
             return
         }
-
+        
         if mediaType == UTType.movie.identifier {
             if let videoURL = info[.mediaURL] as? URL {
                 print("Video URL: \(videoURL)")
-                
-                // Generate thumbnail image from the video URL
                 let asset = AVAsset(url: videoURL)
                 let generator = AVAssetImageGenerator(asset: asset)
                 generator.appliesPreferredTrackTransform = true
@@ -207,8 +183,6 @@ extension AddVideoView: UIImagePickerControllerDelegate, UINavigationControllerD
                 do {
                     let imageRef = try generator.copyCGImage(at: time, actualTime: nil)
                     let thumbnail = UIImage(cgImage: imageRef)
-                    
-                    // Set the thumbnail image to the videoImage UIImageView
                     videoImage.image = thumbnail
                     uploadStackView.isHidden = true
                 } catch let error {
@@ -217,7 +191,7 @@ extension AddVideoView: UIImagePickerControllerDelegate, UINavigationControllerD
             }
         }
     }
-
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true)
     }
@@ -229,7 +203,7 @@ extension AddVideoView : DropDownTextFieldDelegate  {
     }
     
     func didSelect(item: any DropDownItem, for textField: UITextField) {
-       print("select\(item)")
+        print("select\(item)")
     }
 }
 
