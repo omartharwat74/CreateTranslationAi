@@ -159,7 +159,7 @@
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
                                                             <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="image" keyPath="trailingNormalImage" value="down"/>
+                                                                <userDefinedRuntimeAttribute type="image" keyPath="leadingImage" value="down"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </textField>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Translate to:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kYk-Cz-PZi">
@@ -184,7 +184,7 @@
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
                                                             <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="image" keyPath="trailingNormalImage" value="down"/>
+                                                                <userDefinedRuntimeAttribute type="image" keyPath="leadingImage" value="down"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </textField>
                                                     </subviews>

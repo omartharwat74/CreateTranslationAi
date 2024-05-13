@@ -65,7 +65,7 @@ class MGFloatingTextField: UITextField {
     //MARK:- Design Methods -
     private func initialConfiguration() {
         self.delegate = self
-        self.layer.cornerRadius = 16
+        self.layer.cornerRadius = 24
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.1).cgColor
         self.backgroundColor = .clear
@@ -76,7 +76,7 @@ class MGFloatingTextField: UITextField {
         )
     }
     func handelPlaceholderView() {
-        guard let pHolder = self.placeholder else {return}
+        guard self.placeholder != nil else {return}
         //        let width = pHolder.width(withConstrainedHeight: 16, font: UIFont(name: "Cairo-Regular", size: 15)!) + 30
         let xPoint = self.direction == .ltr ? self.frame.minX + 15 : self.frame.maxX - 15 - 50
         let yPoint = self.frame.minY - 8
@@ -169,11 +169,11 @@ extension MGFloatingTextField {
         imageView.frame = containerView.frame
         
         //        if self.direction == .rtl {
-        rightView = containerView
-        rightViewMode = .always
+//        rightView = containerView
+//        rightViewMode = .always
         //        }else {
-        //            leftView = containerView
-        //            leftViewMode = .always
+                    leftView = containerView
+                    leftViewMode = .always
         //        }
         
         
