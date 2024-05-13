@@ -242,6 +242,10 @@ class DropDownTextField: MGFloatingTextField {
         tintColor = UIColor.white
         self.addDoneButtonOnKeyboard()
     }
+    override func caretRect(for position: UITextPosition) -> CGRect {
+        // Return a CGRect with zero width and height to hide the caret
+        return CGRect.zero
+    }
     
     
     private func addDoneButtonOnKeyboard(){

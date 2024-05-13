@@ -120,7 +120,6 @@ class AddVideoView: UIView {
         uploadStackView.isUserInteractionEnabled = true
         videoView.addDashedBorder()
         translateFromTF.dropDownDelegate = self
-        translateFromTF.tintColor = UIColor.clear
 //        translateFromTF.placeholder = "Translate from".localized
     }
     
