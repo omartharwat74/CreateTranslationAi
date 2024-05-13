@@ -32,7 +32,7 @@ class MGFloatingTextField: UITextField {
     }
     @IBInspectable var trailingNormalImage : UIImage? = nil {
         didSet{
-            self.setTrailing(trailingNormalImage, imageWidth: 25, padding: 15, notSecureImage: trailingSelectedImage)
+            self.setTrailing(trailingNormalImage, imageWidth: 30, padding: 15, notSecureImage: trailingSelectedImage)
         }
     }
     @IBInspectable var trailingSelectedImage : UIImage? = nil {
@@ -65,7 +65,7 @@ class MGFloatingTextField: UITextField {
     //MARK:- Design Methods -
     private func initialConfiguration() {
         self.delegate = self
-        self.layer.cornerRadius = 8
+        self.layer.cornerRadius = 16
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.1).cgColor
         self.backgroundColor = .clear
