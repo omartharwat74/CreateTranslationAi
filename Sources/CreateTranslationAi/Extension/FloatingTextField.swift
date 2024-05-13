@@ -241,18 +241,20 @@ extension DropDownTextField: UIPickerViewDelegate, UIPickerViewDataSource {
         let pickerViewWidth = pickerView.frame.width
         let rowView = UIView(frame: CGRect(x: 0, y: 0, width: pickerViewWidth, height: 40))
         
-        let imageView = UIImageView(frame: CGRect(x: 10, y: 5, width: 30, height: 30))
-        imageView.image = SCImage(named: self.items[row].image)
-        rowView.addSubview(imageView)
-        
-        let label = UILabel(frame: CGRect(x: 50, y: 0, width: pickerViewWidth - 60, height: 40))
+        let label = UILabel(frame: CGRect(x: 10, y: 0, width: pickerViewWidth - 60, height: 40))
         label.text = self.items[row].name
         label.textAlignment = .right
         label.textColor = UIColor(red: 0.09, green: 0.09, blue: 0.09, alpha: 1)
         rowView.addSubview(label)
         
+        let imageView = UIImageView(frame: CGRect(x: pickerViewWidth - 40, y: 5, width: 30, height: 30))
+        imageView.image = SCImage(named: self.items[row].image)
+        imageView.contentMode = .scaleAspectFit
+        rowView.addSubview(imageView)
+        
         return rowView
     }
+
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         guard row < self.items.count else {return}
         self.selectedItem = self.items[row]
