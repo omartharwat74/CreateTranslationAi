@@ -59,6 +59,7 @@ class AddVideoView: UIView {
     @IBOutlet weak var videoView: UIView!{
         didSet{
             videoView.layer.cornerRadius = 25
+            videoView.addDashedBorder()
         }
     }
     @IBOutlet weak var videoImage: UIImageView!{
@@ -119,7 +120,6 @@ class AddVideoView: UIView {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewVideoTapped))
         uploadStackView.addGestureRecognizer(tapGesture)
         uploadStackView.isUserInteractionEnabled = true
-        videoView.addDashedBorder()
         translateFromTF.dropDownDelegate = self
         translateToTF.dropDownDelegate = self
     }
