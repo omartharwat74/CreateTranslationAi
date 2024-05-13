@@ -160,6 +160,7 @@
                                                             <textInputTraits key="textInputTraits"/>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="image" keyPath="trailingNormalImage" value="down"/>
+                                                                <userDefinedRuntimeAttribute type="image" keyPath="leadingNormalImage" value="down"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </textField>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Translate to:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kYk-Cz-PZi">
@@ -174,7 +175,7 @@
                                                                 <userDefinedRuntimeAttribute type="string" keyPath="translationKey" value="Translate to:"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </label>
-                                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d8H-RW-65n" customClass="DropDownTextField" customModule="CreateTranslationAi">
+                                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d8H-RW-65n" userLabel="do" customClass="DropDownTextField" customModule="CreateTranslationAi">
                                                             <rect key="frame" x="0.0" y="131" width="337" height="41"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
@@ -185,6 +186,7 @@
                                                             <textInputTraits key="textInputTraits"/>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="image" keyPath="trailingNormalImage" value="down"/>
+                                                                <userDefinedRuntimeAttribute type="image" keyPath="leadingNormalImage" value="down"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </textField>
                                                     </subviews>
