@@ -29,7 +29,7 @@ class MGFloatingTextField: UITextField {
             self.setLeading(leadingNormalImage, imageWidth: 30, padding: 15)
         }
     }
-
+    
     
     let secureButton = UIButton()
     var errorMessageLabel: UILabel?
@@ -66,25 +66,6 @@ class MGFloatingTextField: UITextField {
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
         )
     }
-//    func handelPlaceholderView() {
-//        guard self.placeholder != nil else {return}
-//        //        let width = pHolder.width(withConstrainedHeight: 16, font: UIFont(name: "Cairo-Regular", size: 15)!) + 30
-//        let xPoint = self.direction == .ltr ? self.frame.minX + 15 : self.frame.maxX - 15 - 50
-//        let yPoint = self.frame.minY - 8
-//        self.placeholderView = UIView(frame: CGRect(x: xPoint, y: yPoint, width: 50, height: 20))
-//        self.placeholderView?.backgroundColor = .clear
-//    }
-////    func addDesign() {
-////        self.layer.borderColor = self.selectedBorderColor.cgColor
-////        //        self.createLabelView()
-////        self.tempPlaceholder = self.placeholder
-////        self.placeholder = nil
-////    }
-////    func addDesignForCell() {
-////        self.layer.borderColor = self.selectedBorderColor.cgColor
-////        //        self.createLabelView()
-////        self.tempPlaceholder = self.placeholder
-////    }
     
 }
 extension MGFloatingTextField: UITextFieldDelegate {
@@ -155,10 +136,31 @@ class DropDownTextField: MGFloatingTextField {
         return super.canPerformAction(action, withSender: sender)
     }
     
+    private lazy var selectedImageView: UIImageView = {
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: self.frame.height))
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
     //MARK: - Lifecycle -
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setupDesign()
+        self.addSelectedImageView()
+    }
+    
+    private func addSelectedImageView() {
+        self.selectedImageView.image = nil
+        self.rightView = self.selectedImageView
+        self.rightViewMode = .always
+    }
+    
+    private func updateSelectedImage() {
+        guard let selectedItem = self.selectedItem else {
+            self.selectedImageView.image = nil
+            return
+        }
+        self.selectedImageView.image = UIImage(named: selectedItem.image)
     }
     
     
@@ -226,10 +228,10 @@ extension DropDownTextField: UIPickerViewDelegate, UIPickerViewDataSource {
         
         return rowView
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         guard row < self.items.count else {return}
         self.selectedItem = self.items[row]
-        //        self.doneButtonAction()
+        self.updateSelectedImage()
     }
 }
