@@ -6,7 +6,6 @@
 
 import UIKit
 
-
 class MGFloatingTextField: UITextField {
     
     enum Direction {
@@ -67,50 +66,26 @@ class MGFloatingTextField: UITextField {
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
         )
     }
-    func handelPlaceholderView() {
-        guard self.placeholder != nil else {return}
-        //        let width = pHolder.width(withConstrainedHeight: 16, font: UIFont(name: "Cairo-Regular", size: 15)!) + 30
-        let xPoint = self.direction == .ltr ? self.frame.minX + 15 : self.frame.maxX - 15 - 50
-        let yPoint = self.frame.minY - 8
-        self.placeholderView = UIView(frame: CGRect(x: xPoint, y: yPoint, width: 50, height: 20))
-        self.placeholderView?.backgroundColor = .clear
-    }
-    func addDesign() {
-        self.layer.borderColor = self.selectedBorderColor.cgColor
-        //        self.createLabelView()
-        self.tempPlaceholder = self.placeholder
-        self.placeholder = nil
-    }
-    func addDesignForCell() {
-        self.layer.borderColor = self.selectedBorderColor.cgColor
-        //        self.createLabelView()
-        self.tempPlaceholder = self.placeholder
-    }
+//    func handelPlaceholderView() {
+//        guard self.placeholder != nil else {return}
+//        //        let width = pHolder.width(withConstrainedHeight: 16, font: UIFont(name: "Cairo-Regular", size: 15)!) + 30
+//        let xPoint = self.direction == .ltr ? self.frame.minX + 15 : self.frame.maxX - 15 - 50
+//        let yPoint = self.frame.minY - 8
+//        self.placeholderView = UIView(frame: CGRect(x: xPoint, y: yPoint, width: 50, height: 20))
+//        self.placeholderView?.backgroundColor = .clear
+//    }
+////    func addDesign() {
+////        self.layer.borderColor = self.selectedBorderColor.cgColor
+////        //        self.createLabelView()
+////        self.tempPlaceholder = self.placeholder
+////        self.placeholder = nil
+////    }
+////    func addDesignForCell() {
+////        self.layer.borderColor = self.selectedBorderColor.cgColor
+////        //        self.createLabelView()
+////        self.tempPlaceholder = self.placeholder
+////    }
     
-//    //MARK:- Alert -
-//    func showVisualAlert(_ message: String?) {
-//        timer?.invalidate()
-//        self.errorMessageLabel?.removeFromSuperview()
-//        timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
-//        timer?.fire()
-//        let width = self.frame.width - 30
-//        let xPoint = self.direction == .ltr ? self.frame.minX + 15 : self.frame.maxX - 15 - width
-//        let yPoint = self.frame.maxY + 5
-//        
-//        self.errorMessageLabel = UILabel(frame: CGRect(x: xPoint, y: yPoint, width: width, height: 20))
-//        self.errorMessageLabel?.font = UIFont(name: "Cairo-Bold", size: 10)
-//        self.errorMessageLabel?.textColor = self.selectedBorderColor
-//        self.errorMessageLabel?.text = message
-//        
-//        UIView.transition(with: self.superview!, duration: 0.2, options: .transitionCrossDissolve, animations: {
-//            self.superview!.addSubview(self.errorMessageLabel!)
-//            self.superview!.bringSubviewToFront(self.errorMessageLabel!)
-//        }, completion: nil)
-//        
-//    }
-//    @objc func fireTimer() {
-//        self.layer.borderColor = (self.layer.borderColor! == self.normalBorderColor) ? self.selectedBorderColor.cgColor : self.normalBorderColor
-//    }
 }
 extension MGFloatingTextField: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
