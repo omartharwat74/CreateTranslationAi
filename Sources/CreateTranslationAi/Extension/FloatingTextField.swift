@@ -174,7 +174,13 @@ class DropDownTextField: MGFloatingTextField {
     //MARK: - Properties -
     private lazy var picker = UIPickerView()
     var items: [DropDownItem] = []
-    var selectedItem: DropDownItem?
+    var selectedItem: DropDownItem? {
+        didSet {
+            if let selectedItem = self.selectedItem {
+                self.text = selectedItem.name
+            }
+        }
+    }
     var dropDownDelegate: DropDownTextFieldDelegate?
     open override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         if action == #selector(UIResponderStandardEditActions.paste(_:)) || action == #selector(UIResponderStandardEditActions.cut(_:)) || action == #selector(UIResponderStandardEditActions.delete(_:)) || action == #selector(UIResponderStandardEditActions.select(_:)) {
@@ -189,7 +195,6 @@ class DropDownTextField: MGFloatingTextField {
         self.setupDesign()
         if let firstItem = items.first {
             self.selectedItem = firstItem
-            self.doneButtonAction() // Call doneButtonAction to update the text field
         }
     }
     
