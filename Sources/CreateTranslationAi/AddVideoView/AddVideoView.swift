@@ -84,6 +84,7 @@ class AddVideoView: UIView {
         }
     }
     @IBOutlet weak var translateFromTF: DropDownTextField!
+    @IBOutlet weak var translateToTF: DropDownTextField!
     
     
     let fakeDropDownItems: [FakeDropDownItem] = [
@@ -120,10 +121,7 @@ class AddVideoView: UIView {
         uploadStackView.isUserInteractionEnabled = true
         videoView.addDashedBorder()
         translateFromTF.dropDownDelegate = self
-       
-       
-        
-        //translateFromTF.placeholder = "Translate from".localized
+        translateToTF.dropDownDelegate = self
     }
     
     @objc func viewVideoTapped() {

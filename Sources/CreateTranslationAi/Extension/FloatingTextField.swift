@@ -13,7 +13,7 @@ class MGFloatingTextField: UITextField {
         case rtl
         case ltr
     }
-
+    
     
     //MARK: - Properties -
     var isPassword = true
@@ -25,11 +25,11 @@ class MGFloatingTextField: UITextField {
     private weak var timer: Timer?
     private var direction : Direction = .ltr
     @IBInspectable var leadingImage : UIImage? = nil {
-            didSet{
-                guard let image = self.leadingImage else {return}
-                self.sideImage(image, imageWidth: 25, padding: 15)
-            }
+        didSet{
+            guard let image = self.leadingImage else {return}
+            self.sideImage(image, imageWidth: 25, padding: 15)
         }
+    }
     @IBInspectable var trailingNormalImage : UIImage? = nil {
         didSet{
             self.setTrailing(trailingNormalImage, imageWidth: 25, padding: 15, notSecureImage: trailingSelectedImage)
@@ -60,14 +60,14 @@ class MGFloatingTextField: UITextField {
         super.awakeFromNib()
         self.initialConfiguration()
     }
-
+    
     
     //MARK:- Design Methods -
     private func initialConfiguration() {
         self.delegate = self
-//        self.layer.cornerRadius = 10
-//        self.layer.borderWidth = 1
-//        self.layer.borderColor = UIColor.clear.cgColor
+        //        self.layer.cornerRadius = 10
+        //        self.layer.borderWidth = 1
+        //        self.layer.borderColor = UIColor.clear.cgColor
         self.layer.cornerRadius = 25
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.1).cgColor
@@ -80,7 +80,7 @@ class MGFloatingTextField: UITextField {
     }
     func handelPlaceholderView() {
         guard let pHolder = self.placeholder else {return}
-//        let width = pHolder.width(withConstrainedHeight: 16, font: UIFont(name: "Cairo-Regular", size: 15)!) + 30
+        //        let width = pHolder.width(withConstrainedHeight: 16, font: UIFont(name: "Cairo-Regular", size: 15)!) + 30
         let xPoint = self.direction == .ltr ? self.frame.minX + 15 : self.frame.maxX - 15 - 50
         let yPoint = self.frame.minY - 8
         self.placeholderView = UIView(frame: CGRect(x: xPoint, y: yPoint, width: 50, height: 20))
@@ -88,13 +88,13 @@ class MGFloatingTextField: UITextField {
     }
     func addDesign() {
         self.layer.borderColor = self.selectedBorderColor.cgColor
-//        self.createLabelView()
+        //        self.createLabelView()
         self.tempPlaceholder = self.placeholder
         self.placeholder = nil
     }
     func addDesignForCell() {
         self.layer.borderColor = self.selectedBorderColor.cgColor
-//        self.createLabelView()
+        //        self.createLabelView()
         self.tempPlaceholder = self.placeholder
     }
     
@@ -114,9 +114,9 @@ class MGFloatingTextField: UITextField {
         self.errorMessageLabel?.text = message
         
         UIView.transition(with: self.superview!, duration: 0.2, options: .transitionCrossDissolve, animations: {
-                self.superview!.addSubview(self.errorMessageLabel!)
-                self.superview!.bringSubviewToFront(self.errorMessageLabel!)
-            }, completion: nil)
+            self.superview!.addSubview(self.errorMessageLabel!)
+            self.superview!.bringSubviewToFront(self.errorMessageLabel!)
+        }, completion: nil)
         
     }
     @objc func fireTimer() {
@@ -129,7 +129,7 @@ extension MGFloatingTextField: UITextFieldDelegate {
         guard textField.text?.isEmpty == true else {return}
         self.timer?.invalidate()
         self.layer.borderColor = self.selectedBorderColor.cgColor
-//        self.createLabelView()
+        //        self.createLabelView()
         self.tempPlaceholder = self.placeholder
         self.placeholder = nil
     }
@@ -142,7 +142,7 @@ extension MGFloatingTextField: UITextFieldDelegate {
         UIView.transition(with: self.superview!, duration: 0.1, options: .transitionCrossDissolve, animations: {
             self.placeholderView?.removeFromSuperview()
             self.errorMessageLabel?.removeFromSuperview()
-            }, completion: nil)
+        }, completion: nil)
         self.placeholder = self.tempPlaceholder
     }
     func textFieldDidChangeSelection(_ textField: UITextField) {
@@ -164,13 +164,13 @@ extension MGFloatingTextField {
         containerView.addSubview(secureButton)
         secureButton.frame = containerView.frame
         
-//        if self.direction == .rtl {
-            leftView = containerView
-            leftViewMode = .always
-//        }else {
-//            rightView = containerView
-//            rightViewMode = .always
-//        }
+        //        if self.direction == .rtl {
+        leftView = containerView
+        leftViewMode = .always
+        //        }else {
+        //            rightView = containerView
+        //            rightViewMode = .always
+        //        }
         
         
         self.padding = (self.direction == .rtl) ? UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 50) : UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 15)
@@ -183,13 +183,13 @@ extension MGFloatingTextField {
         containerView.addSubview(imageView)
         imageView.frame = containerView.frame
         
-//        if self.direction == .rtl {
-            rightView = containerView
-            rightViewMode = .always
-//        }else {
-//            leftView = containerView
-//            leftViewMode = .always
-//        }
+        //        if self.direction == .rtl {
+        rightView = containerView
+        rightViewMode = .always
+        //        }else {
+        //            leftView = containerView
+        //            leftViewMode = .always
+        //        }
         
         
         
@@ -220,8 +220,8 @@ class DropDownTextField: MGFloatingTextField {
     
     //MARK: - Properties -
     private lazy var picker = UIPickerView()
-     var items: [DropDownItem] = []
-     var selectedItem: DropDownItem?
+    var items: [DropDownItem] = []
+    var selectedItem: DropDownItem?
     var dropDownDelegate: DropDownTextFieldDelegate?
     open override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         if action == #selector(UIResponderStandardEditActions.paste(_:)) || action == #selector(UIResponderStandardEditActions.cut(_:)) || action == #selector(UIResponderStandardEditActions.delete(_:)) || action == #selector(UIResponderStandardEditActions.select(_:)) {
@@ -235,7 +235,7 @@ class DropDownTextField: MGFloatingTextField {
         super.awakeFromNib()
         self.setupDesign()
     }
-
+    
     
     private func setupDesign() {
         self.picker.delegate = self
@@ -291,6 +291,6 @@ extension DropDownTextField: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         guard row < self.items.count else {return}
         self.selectedItem = self.items[row]
-//        self.doneButtonAction()
+        //        self.doneButtonAction()
     }
 }
