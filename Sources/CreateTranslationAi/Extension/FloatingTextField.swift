@@ -250,7 +250,7 @@ extension DropDownTextField: UIPickerViewDelegate, UIPickerViewDataSource {
 
         let imageView = UIImageView(frame: CGRect(x: pickerView.bounds.width - 40, y: 0, width: 40, height: 40)) // Adjust the frame size as needed
         imageView.contentMode = .scaleAspectFit
-        imageView.image = self.items[row].image
+        imageView.image = UIImage(named: self.items[row].image )
         itemView.addSubview(imageView)
 
         return itemView
