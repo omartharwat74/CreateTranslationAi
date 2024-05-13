@@ -152,10 +152,13 @@ class DropDownTextField: MGFloatingTextField {
         self.rightViewMode = .always
     }
     
-    private func updateSelectedImage() {
-        // Set a static image for testing
-        self.selectedImageView.image = SCImage(named: "a")
-    }
+        private func updateSelectedImage() {
+            guard let selectedItem = self.selectedItem else {
+                self.selectedImageView.image = nil
+                return
+            }
+            self.selectedImageView.image = SCImage(named: selectedItem.image)
+        }
     
     private func setupImage() {
         selectedImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
@@ -166,16 +169,10 @@ class DropDownTextField: MGFloatingTextField {
         rightView = containerView
         rightViewMode = .always
         self.padding = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 50)
-        self.selectedImageView.image = SCImage(named: "a")
+//        self.selectedImageView.image = SCImage(named: "a")
     }
     
-//    private func updateSelectedImage() {
-//        guard let selectedItem = self.selectedItem else {
-//            self.selectedImageView.image = nil
-//            return
-//        }
-//        self.selectedImageView.image = SCImage(named: selectedItem.image)
-//    }
+
     
 
     
