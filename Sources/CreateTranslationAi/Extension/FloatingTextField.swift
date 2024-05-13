@@ -142,6 +142,7 @@ class DropDownTextField: MGFloatingTextField {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setupDesign()
+        updateSelectedImage()
         setupImage()
     }
     
