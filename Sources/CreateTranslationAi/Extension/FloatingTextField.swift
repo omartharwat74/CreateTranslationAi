@@ -142,13 +142,12 @@ class DropDownTextField: MGFloatingTextField {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setupDesign()
-        updateSelectedImage()
         setupImage()
     }
     
     private func updateSelectedImage() {
         guard let selectedItem = self.selectedItem else {
-            self.selectedImageView.image = nil
+            self.selectedImageView.image = SCImage(named: items[0].image)
             return
         }
         self.selectedImageView.image = SCImage(named: selectedItem.image)
@@ -237,6 +236,6 @@ extension DropDownTextField: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         guard row < self.items.count else {return}
         self.selectedItem = self.items[row]
-//        self.updateSelectedImage()
+        //self.updateSelectedImage()
     }
 }
