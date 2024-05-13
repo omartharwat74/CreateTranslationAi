@@ -84,6 +84,8 @@ class AddVideoView: UIView {
         }
     }
     @IBOutlet weak var translateFromTF: DropDownTextField!
+    
+    
     let fakeDropDownItems: [FakeDropDownItem] = [
         FakeDropDownItem(name: "Item 1", value: "Value 1"),
         FakeDropDownItem(name: "Item 2", value: "Value 2"),
@@ -135,6 +137,7 @@ class AddVideoView: UIView {
         uploadStackView.isUserInteractionEnabled = true
         videoView.addDashedBorder()
         translateFromTF.dropDownDelegate = self
+        translateFromTF.placeholder = "Translate from".localized
 //        translateFromView.items = dropDownOptionsDataSource
 //        codeMenuAttributes.textStyle = .value(color: .white, separator: " & ", font: .systemFont(ofSize: 14))
 //        codeMenuAttributes.placeHolderStyle = .value(text: "Please Select Language", textColor: .white)
