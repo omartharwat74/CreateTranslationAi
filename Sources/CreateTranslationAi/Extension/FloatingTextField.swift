@@ -155,14 +155,15 @@ class DropDownTextField: MGFloatingTextField {
     
     
     private func setupImage() {
-        selectedImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        let padding = 15
+        selectedImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30 + 2 * padding, height: 30))
         selectedImageView.contentMode = .scaleAspectFit
         let containerView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         containerView.addSubview(selectedImageView)
         selectedImageView.frame = containerView.frame
         rightView = containerView
         rightViewMode = .always
-        self.padding = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 50)
+        self.padding = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 50)
     }
     
     private func setupDesign() {
