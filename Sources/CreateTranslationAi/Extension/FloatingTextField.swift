@@ -300,7 +300,7 @@ extension DropDownTextField: UIPickerViewDelegate, UIPickerViewDataSource {
         return self.items.count
     }
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        return NSAttributedString(string: self.items[row].name, attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 0.09, green: 0.09, blue: 0.09, alpha: 1).cgColor])
+        return NSAttributedString(string: self.items[row].name, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         guard row < self.items.count else {return}
