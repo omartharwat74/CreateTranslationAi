@@ -136,17 +136,14 @@ class DropDownTextField: MGFloatingTextField {
         return super.canPerformAction(action, withSender: sender)
     }
     
-    private lazy var selectedImageView: UIImageView = {
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: self.frame.height))
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
+    private var selectedImageView = UIImageView()
     
     //MARK: - Lifecycle -
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setupDesign()
-        self.addSelectedImageView()
+//        self.addSelectedImageView()
+        setupImage()
     }
     
     private func addSelectedImageView() {
@@ -159,7 +156,19 @@ class DropDownTextField: MGFloatingTextField {
         // Set a static image for testing
         self.selectedImageView.image = SCImage(named: "a")
     }
-
+    
+    private func setupImage() {
+        selectedImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 40))
+        selectedImageView.contentMode = .scaleAspectFit
+        let containerView = UIView(frame: CGRect(x: 0, y: 0, width: 60, height: frame.height))
+        containerView.addSubview(selectedImageView)
+        selectedImageView.frame = containerView.frame
+        rightView = containerView
+        rightViewMode = .always
+        self.padding = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 50)
+        self.selectedImageView.image = SCImage(named: "a")
+    }
+    
 //    private func updateSelectedImage() {
 //        guard let selectedItem = self.selectedItem else {
 //            self.selectedImageView.image = nil
