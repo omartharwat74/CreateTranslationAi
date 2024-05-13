@@ -88,9 +88,9 @@ class AddVideoView: UIView {
     
     
     let fakeDropDownItems: [FakeDropDownItem] = [
-        FakeDropDownItem(name: "Medium", value: "Value 1"),
-        FakeDropDownItem(name: "Large", value: "Value 2"),
-        FakeDropDownItem(name: "Combo Large", value: "Value 3"),
+        FakeDropDownItem(id: "1" ,name: "العربيه" , image: "a"),
+        FakeDropDownItem(id: "2" ,name: "الانجليزيه", image: "e"),
+        FakeDropDownItem(id: "3" ,name: "الاسبانيه" , image: "e"),
     ]
     
     override init(frame: CGRect) {
@@ -213,7 +213,7 @@ extension AddVideoView : DropDownTextFieldDelegate  {
 struct FakeDropDownItem: DropDownItem {
     var id: String?
     var name: String
-    var value: String
+    var image: String
 }
 
 

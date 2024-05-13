@@ -24,20 +24,15 @@ class MGFloatingTextField: UITextField {
     private var tempPlaceholder: String?
     private weak var timer: Timer?
     private var direction : Direction = .ltr
-    @IBInspectable var leadingImage : UIImage? = nil {
+    
+    @IBInspectable var leadingNormalImage : UIImage? = nil {
         didSet{
-            guard let image = self.leadingImage else {return}
-            self.sideImage(image, imageWidth: 25, padding: 15)
+            self.setLeading(leadingNormalImage, imageWidth: 30, padding: 15, notSecureImage: leadingSelectedImage)
         }
     }
-    @IBInspectable var trailingNormalImage : UIImage? = nil {
+    @IBInspectable var leadingSelectedImage : UIImage? = nil {
         didSet{
-            self.setTrailing(trailingNormalImage, imageWidth: 30, padding: 15, notSecureImage: trailingSelectedImage)
-        }
-    }
-    @IBInspectable var trailingSelectedImage : UIImage? = nil {
-        didSet{
-            self.setTrailing(trailingNormalImage, imageWidth: 25, padding: 15, notSecureImage: trailingSelectedImage)
+            self.setLeading(leadingNormalImage, imageWidth: 30, padding: 15, notSecureImage: leadingSelectedImage)
         }
     }
     let secureButton = UIButton()
@@ -149,8 +144,8 @@ extension MGFloatingTextField: UITextFieldDelegate {
     }
 }
 extension MGFloatingTextField {
-    func setTrailing(_ image: UIImage?, imageWidth: CGFloat, padding: CGFloat, notSecureImage: UIImage?) {
-//        secureButton.setTitle(nil, for: .normal)
+    func setLeading(_ image: UIImage?, imageWidth: CGFloat, padding: CGFloat, notSecureImage: UIImage?) {
+        secureButton.setTitle(nil, for: .normal)
         secureButton.setImage(image, for: .normal)
         secureButton.imageView?.contentMode = .scaleAspectFit
         let containerView = UIView(frame: CGRect(x: 0, y: 0, width: imageWidth + 2 * padding, height: frame.height))
@@ -160,40 +155,13 @@ extension MGFloatingTextField {
         leftViewMode = .always
         self.padding = (self.direction == .rtl) ? UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 50) : UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 15)
     }
-    func sideImage(_ image: UIImage?, imageWidth: CGFloat, padding: CGFloat) {
-        let imageView = UIImageView(image: image)
-        imageView.contentMode = .center
-        
-        let containerView = UIView(frame: CGRect(x: 0, y: 0, width: imageWidth + 2 * padding, height: frame.height))
-        containerView.addSubview(imageView)
-        imageView.frame = containerView.frame
-        
-        //        if self.direction == .rtl {
-//        rightView = containerView
-//        rightViewMode = .always
-        //        }else {
-                    leftView = containerView
-                    leftViewMode = .always
-        //        }
-        
-        
-        
-    }
-//    @objc func toggleSecure() {
-//        self.secureButton.isSelected.toggle()
-//        self.isSecureTextEntry = !self.secureButton.isSelected
-//    }
 }
 
-/*
- How To use?
- 
- The viewController should be the confirm "DropDownTextFieldDelegate" protocol
- */
+
 protocol DropDownItem {
     var id: String? { get }
     var name: String { get }
-    var value: String { get }
+    var image: String { get }
 }
 protocol DropDownTextFieldDelegate {
     func dropDownList(for textField: UITextField) -> [DropDownItem]
@@ -270,9 +238,25 @@ extension DropDownTextField: UIPickerViewDelegate, UIPickerViewDataSource {
         self.items = self.dropDownDelegate?.dropDownList(for: self) ?? []
         return self.items.count
     }
-    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        return NSAttributedString(string: self.items[row].name, attributes: [NSAttributedString.Key.foregroundColor:  UIColor(red: 0.09, green: 0.09, blue: 0.09, alpha: 1)])
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let itemView = UIView(frame: CGRect(x: 0, y: 0, width: pickerView.bounds.width, height: 40))
+
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40)) // Adjust the frame size as needed
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: self.items[row].image)
+        itemView.addSubview(imageView)
+
+        let label = UILabel(frame: CGRect(x: 50, y: 0, width: pickerView.bounds.width - 50, height: 40)) // Adjust the frame size and position as needed
+        label.textColor = UIColor.black // Customize text color as needed
+        label.text = self.items[row].name
+        itemView.addSubview(label)
+
+        return itemView
     }
+
+//    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+//        return NSAttributedString(string: self.items[row].name, attributes: [NSAttributedString.Key.foregroundColor:  UIColor(red: 0.09, green: 0.09, blue: 0.09, alpha: 1)])
+//    }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         guard row < self.items.count else {return}
         self.selectedItem = self.items[row]
