@@ -65,9 +65,6 @@ class MGFloatingTextField: UITextField {
     //MARK:- Design Methods -
     private func initialConfiguration() {
         self.delegate = self
-        //        self.layer.cornerRadius = 10
-        //        self.layer.borderWidth = 1
-        //        self.layer.borderColor = UIColor.clear.cgColor
         self.layer.cornerRadius = 25
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.1).cgColor
@@ -153,7 +150,7 @@ extension MGFloatingTextField: UITextFieldDelegate {
 }
 extension MGFloatingTextField {
     func setTrailing(_ image: UIImage?, imageWidth: CGFloat, padding: CGFloat, notSecureImage: UIImage?) {
-        secureButton.setTitle(nil, for: .normal)
+//        secureButton.setTitle(nil, for: .normal)
         secureButton.setImage(image, for: .normal)
         secureButton.imageView?.contentMode = .scaleAspectFit
         let containerView = UIView(frame: CGRect(x: 0, y: 0, width: imageWidth + 2 * padding, height: frame.height))
@@ -182,10 +179,10 @@ extension MGFloatingTextField {
         
         
     }
-    @objc func toggleSecure() {
-        self.secureButton.isSelected.toggle()
-        self.isSecureTextEntry = !self.secureButton.isSelected
-    }
+//    @objc func toggleSecure() {
+//        self.secureButton.isSelected.toggle()
+//        self.isSecureTextEntry = !self.secureButton.isSelected
+//    }
 }
 
 /*

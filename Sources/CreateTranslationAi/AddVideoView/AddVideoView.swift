@@ -122,6 +122,8 @@ class AddVideoView: UIView {
         videoView.addDashedBorder()
         translateFromTF.dropDownDelegate = self
         translateToTF.dropDownDelegate = self
+        translateFromTF.selectedItem = fakeDropDownItems[0]
+        translateToTF.selectedItem = fakeDropDownItems[0]
     }
     
     @objc func viewVideoTapped() {
