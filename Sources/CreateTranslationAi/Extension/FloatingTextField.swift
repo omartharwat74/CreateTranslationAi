@@ -67,7 +67,7 @@ class MGFloatingTextField: UITextField {
         self.borderStyle = .none
         self.attributedPlaceholder = NSAttributedString(
             string: self.placeholder ?? "please choose language".localized,
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
         )
     }
     func handelPlaceholderView() {
