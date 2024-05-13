@@ -121,9 +121,7 @@ class AddVideoView: UIView {
         videoView.addDashedBorder()
         translateFromTF.dropDownDelegate = self
        
-        guard let firstItem = translateFromTF.items.first else { return }
-        translateFromTF.selectedItem = firstItem
-        translateFromTF.text = firstItem.name
+       
         
         //translateFromTF.placeholder = "Translate from".localized
     }

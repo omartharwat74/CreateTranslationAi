@@ -234,6 +234,12 @@ class DropDownTextField: MGFloatingTextField {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setupDesign()
+        selectFirstItem()
+    }
+    private func selectFirstItem() {
+        guard let firstItem = self.items.first else { return }
+        self.selectedItem = firstItem
+        self.text = firstItem.name
     }
     
     private func setupDesign() {
