@@ -27,14 +27,14 @@ class MGFloatingTextField: UITextField {
     
     @IBInspectable var leadingNormalImage : UIImage? = nil {
         didSet{
-            self.setLeading(leadingNormalImage, imageWidth: 30, padding: 15, notSecureImage: leadingSelectedImage)
+            self.setLeading(leadingNormalImage, imageWidth: 30, padding: 15)
         }
     }
-    @IBInspectable var leadingSelectedImage : UIImage? = nil {
-        didSet{
-            self.setLeading(leadingNormalImage, imageWidth: 30, padding: 15, notSecureImage: leadingSelectedImage)
-        }
-    }
+//    @IBInspectable var leadingSelectedImage : UIImage? = nil {
+//        didSet{
+//            self.setLeading(leadingNormalImage, imageWidth: 30, padding: 15, notSecureImage: leadingSelectedImage)
+//        }
+//    }
     let secureButton = UIButton()
     var errorMessageLabel: UILabel?
     
@@ -144,7 +144,7 @@ extension MGFloatingTextField: UITextFieldDelegate {
     }
 }
 extension MGFloatingTextField {
-    func setLeading(_ image: UIImage?, imageWidth: CGFloat, padding: CGFloat, notSecureImage: UIImage?) {
+    func setLeading(_ image: UIImage?, imageWidth: CGFloat, padding: CGFloat) {
         secureButton.setTitle(nil, for: .normal)
         secureButton.setImage(image, for: .normal)
         secureButton.imageView?.contentMode = .scaleAspectFit
