@@ -30,11 +30,8 @@ class MGFloatingTextField: UITextField {
             self.setLeading(leadingNormalImage, imageWidth: 30, padding: 15)
         }
     }
-//    @IBInspectable var leadingSelectedImage : UIImage? = nil {
-//        didSet{
-//            self.setLeading(leadingNormalImage, imageWidth: 30, padding: 15, notSecureImage: leadingSelectedImage)
-//        }
-//    }
+
+    
     let secureButton = UIButton()
     var errorMessageLabel: UILabel?
     
@@ -90,30 +87,30 @@ class MGFloatingTextField: UITextField {
         self.tempPlaceholder = self.placeholder
     }
     
-    //MARK:- Alert -
-    func showVisualAlert(_ message: String?) {
-        timer?.invalidate()
-        self.errorMessageLabel?.removeFromSuperview()
-        timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
-        timer?.fire()
-        let width = self.frame.width - 30
-        let xPoint = self.direction == .ltr ? self.frame.minX + 15 : self.frame.maxX - 15 - width
-        let yPoint = self.frame.maxY + 5
-        
-        self.errorMessageLabel = UILabel(frame: CGRect(x: xPoint, y: yPoint, width: width, height: 20))
-        self.errorMessageLabel?.font = UIFont(name: "Cairo-Bold", size: 10)
-        self.errorMessageLabel?.textColor = self.selectedBorderColor
-        self.errorMessageLabel?.text = message
-        
-        UIView.transition(with: self.superview!, duration: 0.2, options: .transitionCrossDissolve, animations: {
-            self.superview!.addSubview(self.errorMessageLabel!)
-            self.superview!.bringSubviewToFront(self.errorMessageLabel!)
-        }, completion: nil)
-        
-    }
-    @objc func fireTimer() {
-        self.layer.borderColor = (self.layer.borderColor! == self.normalBorderColor) ? self.selectedBorderColor.cgColor : self.normalBorderColor
-    }
+//    //MARK:- Alert -
+//    func showVisualAlert(_ message: String?) {
+//        timer?.invalidate()
+//        self.errorMessageLabel?.removeFromSuperview()
+//        timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
+//        timer?.fire()
+//        let width = self.frame.width - 30
+//        let xPoint = self.direction == .ltr ? self.frame.minX + 15 : self.frame.maxX - 15 - width
+//        let yPoint = self.frame.maxY + 5
+//        
+//        self.errorMessageLabel = UILabel(frame: CGRect(x: xPoint, y: yPoint, width: width, height: 20))
+//        self.errorMessageLabel?.font = UIFont(name: "Cairo-Bold", size: 10)
+//        self.errorMessageLabel?.textColor = self.selectedBorderColor
+//        self.errorMessageLabel?.text = message
+//        
+//        UIView.transition(with: self.superview!, duration: 0.2, options: .transitionCrossDissolve, animations: {
+//            self.superview!.addSubview(self.errorMessageLabel!)
+//            self.superview!.bringSubviewToFront(self.errorMessageLabel!)
+//        }, completion: nil)
+//        
+//    }
+//    @objc func fireTimer() {
+//        self.layer.borderColor = (self.layer.borderColor! == self.normalBorderColor) ? self.selectedBorderColor.cgColor : self.normalBorderColor
+//    }
 }
 extension MGFloatingTextField: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -202,7 +199,7 @@ class DropDownTextField: MGFloatingTextField {
     private func addDoneButtonOnKeyboard(){
         let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
         doneToolbar.barStyle = .default
-        doneToolbar.tintColor = UIColor.white
+        doneToolbar.tintColor = UIColor(red: 0.09, green: 0.09, blue: 0.09, alpha: 1)
         
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let done: UIBarButtonItem = UIBarButtonItem(title: "Done".localized, style: .done, target: self, action: #selector(self.doneButtonAction))
@@ -244,7 +241,7 @@ extension DropDownTextField: UIPickerViewDelegate, UIPickerViewDataSource {
         let label = UILabel(frame: CGRect(x: 10, y: 0, width: pickerViewWidth - 60, height: 40))
         label.text = self.items[row].name
         label.textAlignment = .right
-        label.textColor = UIColor(red: 0.09, green: 0.09, blue: 0.09, alpha: 1)
+        label.textColor = UIColor.white
         rowView.addSubview(label)
         
         let imageView = UIImageView(frame: CGRect(x: pickerViewWidth - 40, y: 5, width: 30, height: 30))
