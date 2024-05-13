@@ -160,7 +160,7 @@ class DropDownTextField: MGFloatingTextField {
             self.selectedImageView.image = nil
             return
         }
-        self.selectedImageView.image = UIImage(named: selectedItem.image)
+        self.selectedImageView.image = SCImage(named: selectedItem.image)
     }
     
     
