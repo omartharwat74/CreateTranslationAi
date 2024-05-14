@@ -162,7 +162,6 @@ class AddVideoView: UIView {
         translateButton.isEnabled = false
         videoName.isHidden = true
         videoDuration.isHidden = true
-        videoView.dashBorder?.lineWidth = 0.5
         translateButton.backgroundColor = UIColor(red: 0.166, green: 0.271, blue: 0.269, alpha: 1)
     }
     @IBAction func translateClick(_ sender: Any) {
@@ -208,7 +207,6 @@ extension AddVideoView: UIImagePickerControllerDelegate, UINavigationControllerD
         }
     }
     
-    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true)
         
@@ -233,8 +231,7 @@ extension AddVideoView: UIImagePickerControllerDelegate, UINavigationControllerD
                 // Get video name
                 let videoNameString = videoURL.lastPathComponent
                 videoName.text = "\(videoNameString).mp4"
-//                videoView.dashBorder?.isHidden = true
-                videoView.dashBorder?.lineWidth = 0
+                
                 // Generate thumbnail
                 let time = CMTime(seconds: 0.0, preferredTimescale: 1)
                 do {
@@ -244,6 +241,7 @@ extension AddVideoView: UIImagePickerControllerDelegate, UINavigationControllerD
                     uploadStackView.isHidden = true
                     removeVideoButton.isHidden = false
                     video = thumbnail
+                    videoView.dashBorder?.isHidden = true
                     translateButton.backgroundColor = UIColor(red: 0.341, green: 0.584, blue: 0.58, alpha: 1)
                     translateButton.isEnabled = true
                     videoName.isHidden = false
