@@ -61,10 +61,10 @@ class MGFloatingTextField: UITextField {
         self.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.1).cgColor
         self.backgroundColor = .clear
         self.borderStyle = .none
-        self.attributedPlaceholder = NSAttributedString(
-            string: self.placeholder ?? "please choose language".localized,
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
-        )
+        //        self.attributedPlaceholder = NSAttributedString(
+        //            string: self.placeholder ?? "please choose language".localized,
+        //            attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
+        //        )
     }
     
 }
@@ -143,6 +143,11 @@ class DropDownTextField: MGFloatingTextField {
         super.awakeFromNib()
         self.setupDesign()
         setupImage()
+        if let firstItem = self.items.first {
+            self.text = firstItem.name
+            self.selectedItem = firstItem
+            updateSelectedImage()
+        }
     }
     
     private func updateSelectedImage() {

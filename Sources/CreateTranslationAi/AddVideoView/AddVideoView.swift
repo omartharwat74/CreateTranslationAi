@@ -125,10 +125,6 @@ class AddVideoView: UIView {
         translateFromTF.dropDownDelegate = self
         translateToTF.dropDownDelegate = self
         removeVideoButton.isHidden = true
-        translateFromTF.attributedPlaceholder = NSAttributedString(
-            string: languageItems[0].name,
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
-        )
     }
     
     @objc func viewVideoTapped() {
