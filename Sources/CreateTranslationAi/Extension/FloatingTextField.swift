@@ -143,9 +143,10 @@ class DropDownTextField: MGFloatingTextField {
         super.awakeFromNib()
         self.setupDesign()
         setupImage()
-        if let firstItem = self.items.first {
-            self.text = firstItem.name
-            self.selectedItem = firstItem
+        if !items.isEmpty{
+            selectedItem = self.items[0]
+            print(selectedItem)
+            self.text = selectedItem!.name
             updateSelectedImage()
         }
     }
