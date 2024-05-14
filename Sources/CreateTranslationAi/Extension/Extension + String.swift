@@ -35,14 +35,3 @@ extension UILabel {
     }
 }
 
-//extension String: SwiftyMenuDisplayable {
-//    
-//    public var retrievableValue: Any {
-//        return self
-//    }
-//    
-//    public var displayableValue: String {
-//        return self
-//    }
-//    
-//}

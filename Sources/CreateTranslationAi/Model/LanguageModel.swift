@@ -6,19 +6,9 @@
 //
 
 import Foundation
-//import SwiftyMenu
-//
-//struct LanguageModel {
-//    let id: Int
-//    let name: String
-//}
-//
-//extension LanguageModel: SwiftyMenuDisplayable {
-//    public var displayableValue: String {
-//        return self.name
-//    }
-//
-//    public var retrievableValue: Any {
-//        return self.id
-//    }
-//}
+
+struct LanguageModel: DropDownItem {
+    var id: String?
+    var name: String
+    var image: String
+}

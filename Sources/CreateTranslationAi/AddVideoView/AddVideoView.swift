@@ -88,10 +88,10 @@ class AddVideoView: UIView {
     @IBOutlet weak var removeVideoButton: UIButton!
     
     
-    let fakeDropDownItems: [FakeDropDownItem] = [
-        FakeDropDownItem(id: "1" ,name: "العربيه" , image: "a"),
-        FakeDropDownItem(id: "2" ,name: "الانجليزيه", image: "e"),
-        FakeDropDownItem(id: "3" ,name: "الاسبانيه" , image: "e"),
+    let languageItems: [LanguageModel] = [
+        LanguageModel(id: "1" ,name: "العربيه" , image: "a"),
+        LanguageModel(id: "2" ,name: "الانجليزيه", image: "e"),
+        LanguageModel(id: "3" ,name: "الاسبانيه" , image: "e"),
     ]
     
     var video: UIImage? = nil
@@ -125,7 +125,10 @@ class AddVideoView: UIView {
         translateFromTF.dropDownDelegate = self
         translateToTF.dropDownDelegate = self
         removeVideoButton.isHidden = true
-        
+        translateFromTF.attributedPlaceholder = NSAttributedString(
+            string: languageItems[0].name,
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
+        )
     }
     
     @objc func viewVideoTapped() {
@@ -133,6 +136,7 @@ class AddVideoView: UIView {
     }
     @IBAction func removeVideoClick(_ sender: Any) {
         removeVideoButton.isHidden = true
+        uploadStackView.isHidden = false
         videoImage.image = nil
         video = nil
         translateButton.isEnabled = false
@@ -219,18 +223,12 @@ extension AddVideoView: UIImagePickerControllerDelegate, UINavigationControllerD
 
 extension AddVideoView : DropDownTextFieldDelegate  {
     func dropDownList(for textField: UITextField) -> [any DropDownItem] {
-        return fakeDropDownItems
+        return languageItems
     }
     
     func didSelect(item: any DropDownItem, for textField: UITextField) {
         print("select\(item)")
     }
-}
-
-struct FakeDropDownItem: DropDownItem {
-    var id: String?
-    var name: String
-    var image: String
 }
 
 
