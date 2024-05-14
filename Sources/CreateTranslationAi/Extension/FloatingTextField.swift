@@ -61,10 +61,10 @@ class MGFloatingTextField: UITextField {
         self.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.1).cgColor
         self.backgroundColor = .clear
         self.borderStyle = .none
-        //        self.attributedPlaceholder = NSAttributedString(
-        //            string: self.placeholder ?? "please choose language".localized,
-        //            attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
-        //        )
+        self.attributedPlaceholder = NSAttributedString(
+            string: self.placeholder ?? "please choose language".localized,
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
+        )
     }
     
 }
@@ -136,21 +136,21 @@ class DropDownTextField: MGFloatingTextField {
         return super.canPerformAction(action, withSender: sender)
     }
     
-    private var selectedImageView = UIImageView()
+    var selectedImageView = UIImageView()
     
     //MARK: - Lifecycle -
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setupDesign()
         setupImage()
-        if !items.isEmpty{
-            selectedItem = self.items[0]
-            print(selectedItem)
-            self.text = selectedItem!.name
-            updateSelectedImage()
-        }else{
-            print("items is empty")
-        }
+        //        if !items.isEmpty{
+        //            selectedItem = self.items[0]
+        //            print(selectedItem)
+        //            self.text = selectedItem!.name
+        //            updateSelectedImage()
+        //        }else{
+        //            print("items is empty")
+        //        }
     }
     
     private func updateSelectedImage() {
