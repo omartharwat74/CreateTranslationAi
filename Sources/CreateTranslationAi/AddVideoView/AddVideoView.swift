@@ -201,7 +201,7 @@ extension AddVideoView: UIImagePickerControllerDelegate, UINavigationControllerD
                     uploadStackView.isHidden = true
                     removeVideoButton.isHidden = false
                     video = thumbnail
-                    videoView.layer.borderWidth = 0
+                    videoView.dashBorder?.isHidden = true
                     translateButton.backgroundColor = UIColor(red: 0.341, green: 0.584, blue: 0.58, alpha: 1)
                     translateButton.isEnabled = true
                 } catch let error {
