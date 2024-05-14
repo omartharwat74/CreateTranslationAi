@@ -28,7 +28,9 @@
                 <outlet property="translateToTF" destination="d8H-RW-65n" id="cTg-wg-R20"/>
                 <outlet property="translateView" destination="o9d-PS-Ugg" id="xzA-KQ-NX4"/>
                 <outlet property="uploadStackView" destination="DM9-RZ-STI" id="Ff0-aE-4i2"/>
+                <outlet property="videoDuration" destination="3pQ-Nc-321" id="NmZ-96-Kou"/>
                 <outlet property="videoImage" destination="shv-Yh-9Vv" id="mUe-oJ-nr9"/>
+                <outlet property="videoName" destination="VH6-Ke-HmZ" id="sf3-8n-q02"/>
                 <outlet property="videoView" destination="yCU-rf-WGj" id="zy8-MA-oa6"/>
             </connections>
         </placeholder>
@@ -96,18 +98,40 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="shv-Yh-9Vv">
                                                     <rect key="frame" x="0.0" y="0.0" width="361" height="220"/>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aKU-WN-ThB">
-                                                    <rect key="frame" x="305" y="16" width="40" height="40"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="40" id="Mqo-zo-JqX"/>
-                                                        <constraint firstAttribute="width" secondItem="aKU-WN-ThB" secondAttribute="height" multiplier="1:1" id="eps-Rv-Qct"/>
-                                                    </constraints>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain" image="Remove"/>
-                                                    <connections>
-                                                        <action selector="removeVideoClick:" destination="-1" eventType="touchUpInside" id="Rbs-jp-NTH"/>
-                                                    </connections>
-                                                </button>
+                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="tMg-m7-7Hc">
+                                                    <rect key="frame" x="16" y="16" width="329" height="47"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="UVP-an-lVB">
+                                                            <rect key="frame" x="0.0" y="0.0" width="289" height="47"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VH6-Ke-HmZ">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="289" height="19.333333333333332"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3pQ-Nc-321">
+                                                                    <rect key="frame" x="0.0" y="31.333333333333318" width="289" height="15.666666666666668"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aKU-WN-ThB">
+                                                            <rect key="frame" x="289" y="3.6666666666666572" width="40" height="40"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="40" id="7M9-LB-94J"/>
+                                                                <constraint firstAttribute="width" constant="40" id="Mqo-zo-JqX"/>
+                                                            </constraints>
+                                                            <state key="normal" title="Button"/>
+                                                            <buttonConfiguration key="configuration" style="plain" image="Remove"/>
+                                                            <connections>
+                                                                <action selector="removeVideoClick:" destination="-1" eventType="touchUpInside" id="Rbs-jp-NTH"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="DM9-RZ-STI">
                                                     <rect key="frame" x="103.00000000000001" y="72" width="155.33333333333337" height="76"/>
                                                     <subviews>
@@ -137,12 +161,13 @@
                                             <constraints>
                                                 <constraint firstItem="shv-Yh-9Vv" firstAttribute="top" secondItem="yCU-rf-WGj" secondAttribute="top" id="18h-Pf-E67"/>
                                                 <constraint firstItem="DM9-RZ-STI" firstAttribute="centerY" secondItem="yCU-rf-WGj" secondAttribute="centerY" id="343-6y-NbJ"/>
+                                                <constraint firstItem="tMg-m7-7Hc" firstAttribute="top" secondItem="yCU-rf-WGj" secondAttribute="top" constant="16" id="3eO-Qd-Kkf"/>
                                                 <constraint firstItem="shv-Yh-9Vv" firstAttribute="leading" secondItem="yCU-rf-WGj" secondAttribute="leading" id="8nY-Ch-ZwE"/>
                                                 <constraint firstAttribute="height" constant="220" id="MER-m5-gr9"/>
                                                 <constraint firstItem="DM9-RZ-STI" firstAttribute="centerX" secondItem="yCU-rf-WGj" secondAttribute="centerX" id="Odq-6P-RQs"/>
-                                                <constraint firstItem="aKU-WN-ThB" firstAttribute="top" secondItem="yCU-rf-WGj" secondAttribute="top" constant="16" id="VcT-UZ-BNy"/>
-                                                <constraint firstAttribute="trailing" secondItem="aKU-WN-ThB" secondAttribute="trailing" constant="16" id="eZL-p1-YdR"/>
+                                                <constraint firstAttribute="trailing" secondItem="tMg-m7-7Hc" secondAttribute="trailing" constant="16" id="TEv-Pr-rUX"/>
                                                 <constraint firstAttribute="trailing" secondItem="shv-Yh-9Vv" secondAttribute="trailing" id="eds-z0-Gt5"/>
+                                                <constraint firstItem="tMg-m7-7Hc" firstAttribute="leading" secondItem="yCU-rf-WGj" secondAttribute="leading" constant="16" id="gde-KS-sQQ"/>
                                                 <constraint firstAttribute="bottom" secondItem="shv-Yh-9Vv" secondAttribute="bottom" id="sUZ-QM-zK8"/>
                                             </constraints>
                                         </view>

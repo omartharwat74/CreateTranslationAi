@@ -86,6 +86,16 @@ class AddVideoView: UIView {
     @IBOutlet weak var translateFromTF: DropDownTextField!
     @IBOutlet weak var translateToTF: DropDownTextField!
     @IBOutlet weak var removeVideoButton: UIButton!
+    @IBOutlet weak var videoName: UILabel!{
+        didSet{
+            videoName.font = UIFont(name: "DINNextLTArabic-Regular", size: 16)
+        }
+    }
+    @IBOutlet weak var videoDuration: UILabel!{
+        didSet{
+            videoDuration.font = UIFont(name: "DINNextLTArabic-Regular", size: 13)
+        }
+    }
     
     
     let languageItems: [LanguageModel] = [
@@ -125,6 +135,8 @@ class AddVideoView: UIView {
         translateFromTF.dropDownDelegate = self
         translateToTF.dropDownDelegate = self
         removeVideoButton.isHidden = true
+        videoName.isHidden = true
+        videoDuration.isHidden = true
         translateFromTF.attributedPlaceholder = NSAttributedString(
             string: languageItems[1].name,
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
@@ -148,6 +160,8 @@ class AddVideoView: UIView {
         videoImage.image = nil
         video = nil
         translateButton.isEnabled = false
+        videoName.isHidden = true
+        videoDuration.isHidden = true
         translateButton.backgroundColor = UIColor(red: 0.166, green: 0.271, blue: 0.269, alpha: 1)
     }
     @IBAction func translateClick(_ sender: Any) {
@@ -192,7 +206,6 @@ extension AddVideoView: UIImagePickerControllerDelegate, UINavigationControllerD
             }
         }
     }
-    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true)
         
@@ -203,9 +216,22 @@ extension AddVideoView: UIImagePickerControllerDelegate, UINavigationControllerD
         if mediaType == UTType.movie.identifier {
             if let videoURL = info[.mediaURL] as? URL {
                 print("Video URL: \(videoURL)")
+                
+                // Get video asset
                 let asset = AVAsset(url: videoURL)
                 let generator = AVAssetImageGenerator(asset: asset)
                 generator.appliesPreferredTrackTransform = true
+                
+                // Get video duration
+                let durationInSeconds = CMTimeGetSeconds(asset.duration)
+                let videoDurationString = formatTime(durationInSeconds)
+                videoDuration.text = "Duration: \(videoDurationString)"
+                
+                // Get video name
+                let videoNameString = videoURL.lastPathComponent
+                videoName.text = "\(videoNameString).mp4"
+                
+                // Generate thumbnail
                 let time = CMTime(seconds: 0.0, preferredTimescale: 1)
                 do {
                     let imageRef = try generator.copyCGImage(at: time, actualTime: nil)
@@ -217,15 +243,58 @@ extension AddVideoView: UIImagePickerControllerDelegate, UINavigationControllerD
                     videoView.dashBorder?.isHidden = true
                     translateButton.backgroundColor = UIColor(red: 0.341, green: 0.584, blue: 0.58, alpha: 1)
                     translateButton.isEnabled = true
+                    videoName.isHidden = false
+                    videoDuration.isHidden = false
                 } catch let error {
                     print("Error generating thumbnail: \(error)")
                 }
             }
         }
     }
+
+
+    
+//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+//        picker.dismiss(animated: true)
+//        
+//        guard let mediaType = info[.mediaType] as? String else {
+//            return
+//        }
+//        
+//        if mediaType == UTType.movie.identifier {
+//            if let videoURL = info[.mediaURL] as? URL {
+//                print("Video URL: \(videoURL)")
+//                let asset = AVAsset(url: videoURL)
+//                let generator = AVAssetImageGenerator(asset: asset)
+//                generator.appliesPreferredTrackTransform = true
+//                let time = CMTime(seconds: 0.0, preferredTimescale: 1)
+//                do {
+//                    let imageRef = try generator.copyCGImage(at: time, actualTime: nil)
+//                    let thumbnail = UIImage(cgImage: imageRef)
+//                    videoImage.image = thumbnail
+//                    uploadStackView.isHidden = true
+//                    removeVideoButton.isHidden = false
+//                    video = thumbnail
+//                    videoView.dashBorder?.isHidden = true
+//                    translateButton.backgroundColor = UIColor(red: 0.341, green: 0.584, blue: 0.58, alpha: 1)
+//                    translateButton.isEnabled = true
+//                } catch let error {
+//                    print("Error generating thumbnail: \(error)")
+//                }
+//            }
+//        }
+//    }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true)
+    }
+    
+    func formatTime(_ seconds: Double) -> String {
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .positional
+        formatter.zeroFormattingBehavior = .pad
+        formatter.allowedUnits = [.minute, .second]
+        return formatter.string(from: TimeInterval(seconds)) ?? "00:00"
     }
 }
 
