@@ -148,6 +148,8 @@ class DropDownTextField: MGFloatingTextField {
             print(selectedItem)
             self.text = selectedItem!.name
             updateSelectedImage()
+        }else{
+            print("items is empty")
         }
     }
     
