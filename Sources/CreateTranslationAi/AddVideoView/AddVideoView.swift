@@ -59,7 +59,8 @@ class AddVideoView: UIView {
     @IBOutlet weak var videoView: UIView!{
         didSet{
             videoView.layer.cornerRadius = 25
-            videoView.addDashedBorder()
+//            videoView.addDashedBorder()
+            videoView.addLineDashedStroke()
         }
     }
     @IBOutlet weak var videoImage: UIImageView!{
