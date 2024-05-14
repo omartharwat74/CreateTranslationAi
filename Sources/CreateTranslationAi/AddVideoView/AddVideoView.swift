@@ -137,6 +137,7 @@ class AddVideoView: UIView {
         removeVideoButton.isHidden = true
         videoName.isHidden = true
         videoDuration.isHidden = true
+        videoView.dashBorder?.isHidden = false
         translateFromTF.attributedPlaceholder = NSAttributedString(
             string: languageItems[1].name,
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
@@ -162,6 +163,7 @@ class AddVideoView: UIView {
         translateButton.isEnabled = false
         videoName.isHidden = true
         videoDuration.isHidden = true
+        videoView.dashBorder?.isHidden = false
         translateButton.backgroundColor = UIColor(red: 0.166, green: 0.271, blue: 0.269, alpha: 1)
     }
     @IBAction func translateClick(_ sender: Any) {
