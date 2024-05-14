@@ -126,11 +126,17 @@ class AddVideoView: UIView {
         translateToTF.dropDownDelegate = self
         removeVideoButton.isHidden = true
         translateFromTF.attributedPlaceholder = NSAttributedString(
+            string: languageItems[1].name,
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
+        )
+        translateFromTF.selectedImageView.image = SCImage(named: languageItems[1].image)
+        translateFromTF.selectedItem = languageItems[1]
+        translateToTF.attributedPlaceholder = NSAttributedString(
             string: languageItems[0].name,
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
         )
-        translateFromTF.selectedImageView.image = SCImage(named: languageItems[0].image)
-        translateFromTF.selectedItem = languageItems[0]
+        translateToTF.selectedImageView.image = SCImage(named: languageItems[0].image)
+        translateToTF.selectedItem = languageItems[0]
     }
     
     @objc func viewVideoTapped() {
