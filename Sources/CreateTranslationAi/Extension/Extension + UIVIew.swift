@@ -47,10 +47,10 @@ extension UIView {
         let borderLayer = CAShapeLayer()
 
         borderLayer.strokeColor = UIColor(red: 0.341, green: 0.584, blue: 0.58, alpha: 1).cgColor
-        borderLayer.lineDashPattern = [10, 5]
+        borderLayer.lineDashPattern = [2, 2]
         borderLayer.frame = bounds
         borderLayer.fillColor = nil
-        borderLayer.path = UIBezierPath(roundedRect: bounds, byRoundingCorners: .allCorners, cornerRadii: CGSize(width: 25, height: 25)).cgPath
+        borderLayer.path = UIBezierPath(roundedRect: bounds, byRoundingCorners: .allCorners, cornerRadii: CGSize(width: 16, height: 16)).cgPath
 
         layer.addSublayer(borderLayer)
         return borderLayer
