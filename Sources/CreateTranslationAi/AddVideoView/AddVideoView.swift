@@ -206,6 +206,8 @@ extension AddVideoView: UIImagePickerControllerDelegate, UINavigationControllerD
             }
         }
     }
+    
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true)
         
@@ -227,7 +229,7 @@ extension AddVideoView: UIImagePickerControllerDelegate, UINavigationControllerD
                 let videoDurationString = formatTime(durationInSeconds)
                 videoDuration.text = "Duration: \(videoDurationString)"
                 
-                // Get video name from URL
+                // Get video name
                 let videoNameString = videoURL.lastPathComponent
                 videoName.text = "\(videoNameString).mp4"
                 
@@ -251,53 +253,6 @@ extension AddVideoView: UIImagePickerControllerDelegate, UINavigationControllerD
             }
         }
     }
-
-
-//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-//        picker.dismiss(animated: true)
-//        
-//        guard let mediaType = info[.mediaType] as? String else {
-//            return
-//        }
-//        
-//        if mediaType == UTType.movie.identifier {
-//            if let videoURL = info[.mediaURL] as? URL {
-//                print("Video URL: \(videoURL)")
-//                
-//                // Get video asset
-//                let asset = AVAsset(url: videoURL)
-//                let generator = AVAssetImageGenerator(asset: asset)
-//                generator.appliesPreferredTrackTransform = true
-//                
-//                // Get video duration
-//                let durationInSeconds = CMTimeGetSeconds(asset.duration)
-//                let videoDurationString = formatTime(durationInSeconds)
-//                videoDuration.text = "Duration: \(videoDurationString)"
-//                
-//                // Get video name
-//                let videoNameString = videoURL.lastPathComponent
-//                videoName.text = "\(videoNameString).mp4"
-//                
-//                // Generate thumbnail
-//                let time = CMTime(seconds: 0.0, preferredTimescale: 1)
-//                do {
-//                    let imageRef = try generator.copyCGImage(at: time, actualTime: nil)
-//                    let thumbnail = UIImage(cgImage: imageRef)
-//                    videoImage.image = thumbnail
-//                    uploadStackView.isHidden = true
-//                    removeVideoButton.isHidden = false
-//                    video = thumbnail
-//                    videoView.dashBorder?.isHidden = true
-//                    translateButton.backgroundColor = UIColor(red: 0.341, green: 0.584, blue: 0.58, alpha: 1)
-//                    translateButton.isEnabled = true
-//                    videoName.isHidden = false
-//                    videoDuration.isHidden = false
-//                } catch let error {
-//                    print("Error generating thumbnail: \(error)")
-//                }
-//            }
-//        }
-//    }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true)
