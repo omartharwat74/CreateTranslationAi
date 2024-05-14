@@ -43,17 +43,6 @@ extension UIView {
 
         layer.addSublayer(borderLayer)
     }
-    func addLineDashedStroke() -> CALayer {
-        let borderLayer = CAShapeLayer()
 
-        borderLayer.strokeColor = UIColor(red: 0.341, green: 0.584, blue: 0.58, alpha: 1).cgColor
-        borderLayer.lineDashPattern = [2, 2]
-        borderLayer.frame = bounds
-        borderLayer.fillColor = nil
-        borderLayer.path = UIBezierPath(roundedRect: bounds, byRoundingCorners: .allCorners, cornerRadii: CGSize(width: 16, height: 16)).cgPath
-
-        layer.addSublayer(borderLayer)
-        return borderLayer
-    }
 }
 

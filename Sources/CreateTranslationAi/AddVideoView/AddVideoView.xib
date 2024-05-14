@@ -89,7 +89,7 @@
                                                 <userDefinedRuntimeAttribute type="string" keyPath="translationKey" value="Select the video from your files"/>
                                             </userDefinedRuntimeAttributes>
                                         </label>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yCU-rf-WGj">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yCU-rf-WGj" customClass="RectangularDashedView" customModule="CreateTranslationAi">
                                             <rect key="frame" x="0.0" y="50" width="361" height="220"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="shv-Yh-9Vv">

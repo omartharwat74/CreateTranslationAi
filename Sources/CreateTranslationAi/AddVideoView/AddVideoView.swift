@@ -56,11 +56,10 @@ class AddVideoView: UIView {
         }
     }
     @IBOutlet weak var uploadStackView: UIStackView!
-    @IBOutlet weak var videoView: UIView!{
+    @IBOutlet weak var videoView: RectangularDashedView!{
         didSet{
             videoView.layer.cornerRadius = 25
 //            videoView.addDashedBorder()
-            videoView.addLineDashedStroke()
         }
     }
     @IBOutlet weak var videoImage: UIImageView!{
