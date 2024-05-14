@@ -132,6 +132,7 @@ class AddVideoView: UIView {
         openGallery()
     }
     @IBAction func removeVideoClick(_ sender: Any) {
+        removeVideoButton.isHidden = true
         videoImage.image = nil
         video = nil
         translateButton.isEnabled = false
