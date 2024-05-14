@@ -137,7 +137,7 @@ class AddVideoView: UIView {
         removeVideoButton.isHidden = true
         videoName.isHidden = true
         videoDuration.isHidden = true
-        videoView.dashBorder?.isHidden = false
+        videoView.showDashBorder()
         translateFromTF.attributedPlaceholder = NSAttributedString(
             string: languageItems[1].name,
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
@@ -163,7 +163,7 @@ class AddVideoView: UIView {
         translateButton.isEnabled = false
         videoName.isHidden = true
         videoDuration.isHidden = true
-        videoView.dashBorder?.isHidden = false
+        videoView.showDashBorder()
         translateButton.backgroundColor = UIColor(red: 0.166, green: 0.271, blue: 0.269, alpha: 1)
     }
     @IBAction func translateClick(_ sender: Any) {
@@ -243,7 +243,7 @@ extension AddVideoView: UIImagePickerControllerDelegate, UINavigationControllerD
                     uploadStackView.isHidden = true
                     removeVideoButton.isHidden = false
                     video = thumbnail
-                    videoView.dashBorder?.isHidden = true
+                    videoView.hideDashBorder()
                     translateButton.backgroundColor = UIColor(red: 0.341, green: 0.584, blue: 0.58, alpha: 1)
                     translateButton.isEnabled = true
                     videoName.isHidden = false
