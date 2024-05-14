@@ -227,20 +227,8 @@ extension AddVideoView: UIImagePickerControllerDelegate, UINavigationControllerD
                 let videoDurationString = formatTime(durationInSeconds)
                 videoDuration.text = "Duration: \(videoDurationString)"
                 
-                // Get video name from metadata
-                let assetMetadata = AVAsset(url: videoURL).metadata
-                var videoNameString = ""
-                for metadataItem in assetMetadata {
-                    if metadataItem.commonKey == .commonKeyTitle {
-                        if let title = metadataItem.value as? String {
-                            videoNameString = title
-                        }
-                    }
-                }
-                // If metadata doesn't contain the title, fallback to URL's last path component
-                if videoNameString.isEmpty {
-                    videoNameString = videoURL.lastPathComponent
-                }
+                // Get video name from URL
+                let videoNameString = videoURL.lastPathComponent
                 videoName.text = "\(videoNameString).mp4"
                 
                 // Generate thumbnail
@@ -263,6 +251,7 @@ extension AddVideoView: UIImagePickerControllerDelegate, UINavigationControllerD
             }
         }
     }
+
 
 //    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 //        picker.dismiss(animated: true)
