@@ -20,6 +20,7 @@
                 <outlet property="chooseVideo" destination="w6r-Xi-qjO" id="Png-RN-AOP"/>
                 <outlet property="extractVideo" destination="WgJ-5d-lQY" id="mHK-TT-C4V"/>
                 <outlet property="projectName" destination="UAh-pZ-YlN" id="gAq-nb-at2"/>
+                <outlet property="removeVideoButton" destination="aKU-WN-ThB" id="gPO-rY-JXj"/>
                 <outlet property="translateButton" destination="ULw-0o-eyv" id="GcZ-OP-5Eo"/>
                 <outlet property="translateFromLabel" destination="nr7-dO-aaw" id="4pU-9L-LJ9"/>
                 <outlet property="translateFromTF" destination="wbF-yt-CBw" id="hII-3X-MPB"/>
@@ -95,6 +96,18 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="shv-Yh-9Vv">
                                                     <rect key="frame" x="0.0" y="0.0" width="361" height="220"/>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aKU-WN-ThB">
+                                                    <rect key="frame" x="305" y="16" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="Mqo-zo-JqX"/>
+                                                        <constraint firstAttribute="width" secondItem="aKU-WN-ThB" secondAttribute="height" multiplier="1:1" id="eps-Rv-Qct"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="Remove"/>
+                                                    <connections>
+                                                        <action selector="removeVideoClick:" destination="-1" eventType="touchUpInside" id="Rbs-jp-NTH"/>
+                                                    </connections>
+                                                </button>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="DM9-RZ-STI">
                                                     <rect key="frame" x="103.00000000000001" y="72" width="155.33333333333337" height="76"/>
                                                     <subviews>
@@ -127,6 +140,8 @@
                                                 <constraint firstItem="shv-Yh-9Vv" firstAttribute="leading" secondItem="yCU-rf-WGj" secondAttribute="leading" id="8nY-Ch-ZwE"/>
                                                 <constraint firstAttribute="height" constant="220" id="MER-m5-gr9"/>
                                                 <constraint firstItem="DM9-RZ-STI" firstAttribute="centerX" secondItem="yCU-rf-WGj" secondAttribute="centerX" id="Odq-6P-RQs"/>
+                                                <constraint firstItem="aKU-WN-ThB" firstAttribute="top" secondItem="yCU-rf-WGj" secondAttribute="top" constant="16" id="VcT-UZ-BNy"/>
+                                                <constraint firstAttribute="trailing" secondItem="aKU-WN-ThB" secondAttribute="trailing" constant="16" id="eZL-p1-YdR"/>
                                                 <constraint firstAttribute="trailing" secondItem="shv-Yh-9Vv" secondAttribute="trailing" id="eds-z0-Gt5"/>
                                                 <constraint firstAttribute="bottom" secondItem="shv-Yh-9Vv" secondAttribute="bottom" id="sUZ-QM-zK8"/>
                                             </constraints>
@@ -235,7 +250,7 @@
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ULw-0o-eyv">
                             <rect key="frame" x="40" y="17" width="313" height="50"/>
-                            <color key="backgroundColor" red="0.3411764706" green="0.58431372550000005" blue="0.58039215690000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.16470588235294117" green="0.27058823529411763" blue="0.27058823529411763" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="f2W-NF-6Lr"/>
                             </constraints>
@@ -243,6 +258,9 @@
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" title="Make your vision a reality" image="image 12"/>
                             <buttonConfiguration key="configuration" style="plain" image="image 12" title="Get your translation"/>
+                            <connections>
+                                <action selector="translateClick:" destination="-1" eventType="touchUpInside" id="rRl-qM-vUQ"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -279,6 +297,7 @@
         </view>
     </objects>
     <resources>
+        <image name="Remove" width="40" height="40"/>
         <image name="Upload" width="119" height="116"/>
         <image name="arrow.right" catalog="system" width="128" height="95"/>
         <image name="down" width="17" height="18"/>

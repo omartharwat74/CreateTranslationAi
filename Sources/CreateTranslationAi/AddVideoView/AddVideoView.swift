@@ -59,7 +59,6 @@ class AddVideoView: UIView {
     @IBOutlet weak var videoView: RectangularDashedView!{
         didSet{
             videoView.layer.cornerRadius = 25
-//            videoView.addDashedBorder()
         }
     }
     @IBOutlet weak var videoImage: UIImageView!{
@@ -86,6 +85,7 @@ class AddVideoView: UIView {
     }
     @IBOutlet weak var translateFromTF: DropDownTextField!
     @IBOutlet weak var translateToTF: DropDownTextField!
+    @IBOutlet weak var removeVideoButton: UIButton!
     
     
     let fakeDropDownItems: [FakeDropDownItem] = [
@@ -93,6 +93,8 @@ class AddVideoView: UIView {
         FakeDropDownItem(id: "2" ,name: "الانجليزيه", image: "e"),
         FakeDropDownItem(id: "3" ,name: "الاسبانيه" , image: "e"),
     ]
+    
+    var video: UIImage? = nil
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -122,10 +124,21 @@ class AddVideoView: UIView {
         uploadStackView.isUserInteractionEnabled = true
         translateFromTF.dropDownDelegate = self
         translateToTF.dropDownDelegate = self
+        removeVideoButton.isHidden = true
+        
     }
     
     @objc func viewVideoTapped() {
         openGallery()
+    }
+    @IBAction func removeVideoClick(_ sender: Any) {
+        videoImage.image = nil
+        video = nil
+        translateButton.isEnabled = false
+        translateButton.backgroundColor = UIColor(red: 0.166, green: 0.271, blue: 0.269, alpha: 1)
+    }
+    @IBAction func translateClick(_ sender: Any) {
+        
     }
     
 }
@@ -186,6 +199,11 @@ extension AddVideoView: UIImagePickerControllerDelegate, UINavigationControllerD
                     let thumbnail = UIImage(cgImage: imageRef)
                     videoImage.image = thumbnail
                     uploadStackView.isHidden = true
+                    removeVideoButton.isHidden = false
+                    video = thumbnail
+                    videoView.layer.borderWidth = 0
+                    translateButton.backgroundColor = UIColor(red: 0.341, green: 0.584, blue: 0.58, alpha: 1)
+                    translateButton.isEnabled = true
                 } catch let error {
                     print("Error generating thumbnail: \(error)")
                 }

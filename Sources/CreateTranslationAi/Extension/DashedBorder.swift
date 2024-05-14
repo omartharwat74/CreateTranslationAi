@@ -22,8 +22,6 @@ class RectangularDashedView: UIView {
         dashBorder.fillColor = nil
         dashBorder.path = UIBezierPath(roundedRect: bounds, cornerRadius: 25).cgPath
         dashBorder.path = UIBezierPath(roundedRect: bounds, cornerRadius: 25).cgPath
-        
-        //            dashBorder.path = UIBezierPath(rect: bounds).cgPath
         layer.addSublayer(dashBorder)
         self.dashBorder = dashBorder
     }
