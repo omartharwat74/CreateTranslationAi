@@ -167,7 +167,11 @@ class AddVideoView: UIView {
         translateButton.backgroundColor = UIColor(red: 0.166, green: 0.271, blue: 0.269, alpha: 1)
     }
     @IBAction func translateClick(_ sender: Any) {
-        
+        if let parentVC = self.parentViewController {
+            let destinationView = EditTranslateVC()
+            destinationView.modalPresentationStyle = .fullScreen
+            parentVC.present(destinationView, animated: true)
+        }
     }
     
 }
