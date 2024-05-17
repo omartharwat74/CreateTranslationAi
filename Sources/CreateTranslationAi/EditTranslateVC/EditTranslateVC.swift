@@ -126,7 +126,7 @@ class EditTranslateVC: UIViewController {
         // Play the video
         player?.play()
         isPlaying = true
-        playStopButton.setImage(UIImage(named: "video-pause"), for: .normal)
+        playStopButton.setImage(SCImage(named: "video-pause"), for: .normal)
     }
     
     func stopVideo() {
@@ -144,6 +144,6 @@ class EditTranslateVC: UIViewController {
         // Remove the player layer
         playerLayer?.removeFromSuperlayer()
         isPlaying = false
-        playStopButton.setImage(UIImage(named:"video-play"), for: .normal)
+        playStopButton.setImage(SCImage(named:"video-play"), for: .normal)
     }
 }
