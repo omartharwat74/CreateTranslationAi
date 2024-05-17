@@ -30,6 +30,13 @@ class EditTranslateVC: UIViewController {
             saveButton.setTitle("save".localized, for: .normal)
         }
     }
+    @IBOutlet weak var videoView: UIView!{
+        didSet{
+            videoView.layer.cornerRadius = 15
+            videoView.layer.borderWidth = 0.5
+            videoView.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.1).cgColor
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
