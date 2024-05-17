@@ -105,6 +105,7 @@ class AddVideoView: UIView {
     ]
     
     var video: UIImage? = nil
+    var selectedVideoURL: URL?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -169,6 +170,7 @@ class AddVideoView: UIView {
     @IBAction func translateClick(_ sender: Any) {
         if let parentVC = self.parentViewController {
             let destinationView = EditTranslateVC()
+            destinationView.selectedVideoURL = selectedVideoURL
             destinationView.modalPresentationStyle = .fullScreen
             parentVC.present(destinationView, animated: true)
         }
@@ -223,6 +225,7 @@ extension AddVideoView: UIImagePickerControllerDelegate, UINavigationControllerD
         if mediaType == UTType.movie.identifier {
             if let videoURL = info[.mediaURL] as? URL {
                 print("Video URL: \(videoURL)")
+                selectedVideoURL = videoURL
                 
                 // Get video asset
                 let asset = AVAsset(url: videoURL)

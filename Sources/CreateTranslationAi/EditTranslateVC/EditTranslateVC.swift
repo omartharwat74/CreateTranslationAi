@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import AVKit
+import AVFoundation
 
 class EditTranslateVC: UIViewController {
     
@@ -38,6 +40,8 @@ class EditTranslateVC: UIViewController {
         }
     }
     
+    var selectedVideoURL: URL?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,4 +63,22 @@ class EditTranslateVC: UIViewController {
         print("save")
     }
     
+    @IBAction func playVideoButtonTapped(_ sender: Any) {
+        playVideo()
+    }
+    
+    func playVideo() {
+        guard let videoURL = selectedVideoURL else {
+            print("Video URL is not set")
+            return
+        }
+        
+        let player = AVPlayer(url: videoURL)
+        let playerViewController = AVPlayerViewController()
+        playerViewController.player = player
+        
+        present(playerViewController, animated: true) {
+            player.play()
+        }
+    }
 }
