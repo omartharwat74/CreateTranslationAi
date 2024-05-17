@@ -73,6 +73,12 @@ class EditTranslateVC: UIViewController {
         print("save")
     }
     
+    @IBAction func forwardTen(_ sender: Any) {
+        seekVideo(by: 10)
+    }
+    @IBAction func backwardTen(_ sender: Any) {
+        seekVideo(by: -10)
+    }
     @IBAction func playVideoButtonTapped(_ sender: Any) {
         if isPlaying {
             stopVideo()
@@ -81,6 +87,10 @@ class EditTranslateVC: UIViewController {
         }
     }
     
+}
+
+
+extension EditTranslateVC {
     func setupThumbnail() {
         guard let videoURL = selectedVideoURL else {
             print("Video URL is not set")
@@ -120,29 +130,17 @@ class EditTranslateVC: UIViewController {
             print("Video URL is not set")
             return
         }
-        
-        // Create an AVPlayer
         player = AVPlayer(url: videoURL)
-        
-        // Create an AVPlayerLayer
         playerLayer = AVPlayerLayer(player: player)
         playerLayer?.frame = videoContainerView.bounds
         playerLayer?.videoGravity = .resizeAspect
-        
-        // Add the player layer to the container view
         if let playerLayer = playerLayer {
             videoContainerView.layer.addSublayer(playerLayer)
         }
-        
-        // Seek to the current playback time
         player?.seek(to: currentPlaybackTime, toleranceBefore: .zero, toleranceAfter: .zero)
-        
-        // Add time observer to update current playback time
         player?.addPeriodicTimeObserver(forInterval: CMTime(seconds: 1, preferredTimescale: 1), queue: .main) { [weak self] time in
             self?.updateCurrentTimeLabel(time)
         }
-        
-        // Play the video
         player?.play()
         isPlaying = true
         playStopButton.setImage(SCImage(named: "video-pause"), for: .normal)
@@ -150,21 +148,26 @@ class EditTranslateVC: UIViewController {
     
     func stopVideo() {
         guard let player = player else { return }
-        
-        // Pause the video
         player.pause()
-        
-        // Get the current playback time
         currentPlaybackTime = player.currentTime()
-        
-        // Update the thumbnail to the current frame
         generateThumbnail(for: selectedVideoURL!, at: currentPlaybackTime)
-        
-        // Remove the player layer
         playerLayer?.removeFromSuperlayer()
         isPlaying = false
         playStopButton.setImage(SCImage(named:"video-play"), for: .normal)
     }
+    func seekVideo(by seconds: Int64) {
+        guard let player = player else { return }
+        
+        let currentTime = player.currentTime()
+        let newTime = CMTimeAdd(currentTime, CMTimeMake(value: seconds, timescale: 1))
+        
+        player.seek(to: newTime, toleranceBefore: .zero, toleranceAfter: .zero) { [weak self] _ in
+            self?.currentPlaybackTime = newTime
+            self?.updateCurrentTimeLabel(newTime)
+            self?.generateThumbnail(for: self!.selectedVideoURL!, at: newTime)
+        }
+    }
+    
     
     func updateCurrentTimeLabel(_ time: CMTime) {
         let currentSeconds = CMTimeGetSeconds(time)
