@@ -48,6 +48,7 @@ class EditTranslateVC: UIViewController {
     var player: AVPlayer?
     var playerLayer: AVPlayerLayer?
     var isPlaying = false
+    var currentPlaybackTime: CMTime = CMTime.zero
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,11 +84,14 @@ class EditTranslateVC: UIViewController {
             return
         }
         
-        let asset = AVAsset(url: videoURL)
+        generateThumbnail(for: videoURL, at: CMTime(seconds: 0.0, preferredTimescale: 1))
+    }
+    
+    func generateThumbnail(for url: URL, at time: CMTime) {
+        let asset = AVAsset(url: url)
         let generator = AVAssetImageGenerator(asset: asset)
         generator.appliesPreferredTrackTransform = true
         
-        let time = CMTime(seconds: 0.0, preferredTimescale: 1)
         do {
             let imageRef = try generator.copyCGImage(at: time, actualTime: nil)
             let thumbnail = UIImage(cgImage: imageRef)
@@ -116,6 +120,9 @@ class EditTranslateVC: UIViewController {
             videoContainerView.layer.addSublayer(playerLayer)
         }
         
+        // Seek to the current playback time
+        player?.seek(to: currentPlaybackTime, toleranceBefore: .zero, toleranceAfter: .zero)
+        
         // Play the video
         player?.play()
         isPlaying = true
@@ -123,10 +130,20 @@ class EditTranslateVC: UIViewController {
     }
     
     func stopVideo() {
-        player?.pause()
+        guard let player = player else { return }
+        
+        // Pause the video
+        player.pause()
+        
+        // Get the current playback time
+        currentPlaybackTime = player.currentTime()
+        
+        // Update the thumbnail to the current frame
+        generateThumbnail(for: selectedVideoURL!, at: currentPlaybackTime)
+        
+        // Remove the player layer
         playerLayer?.removeFromSuperlayer()
         isPlaying = false
         playStopButton.setTitle("Play", for: .normal)
     }
 }
-
