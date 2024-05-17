@@ -95,6 +95,7 @@ class EditTranslateVC: UIViewController {
     }
     @IBAction func maximizeVideo(_ sender: Any) {
         guard let videoURL = selectedVideoURL else { return }
+        stopVideo()
         let playerViewController = AVPlayerViewController()
         playerViewController.player = AVPlayer(url: videoURL)
         present(playerViewController, animated: true) {
