@@ -39,8 +39,11 @@ class EditTranslateVC: UIViewController {
             videoView.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.1).cgColor
         }
     }
+    @IBOutlet weak var videoContainerView: UIView!
     
     var selectedVideoURL: URL?
+    var player: AVPlayer?
+    var playerLayer: AVPlayerLayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,21 +67,30 @@ class EditTranslateVC: UIViewController {
     }
     
     @IBAction func playVideoButtonTapped(_ sender: Any) {
-        playVideo()
+        playVideoInView()
     }
     
-    func playVideo() {
+    func playVideoInView() {
         guard let videoURL = selectedVideoURL else {
             print("Video URL is not set")
             return
         }
         
-        let player = AVPlayer(url: videoURL)
-        let playerViewController = AVPlayerViewController()
-        playerViewController.player = player
+        // Create an AVPlayer
+        player = AVPlayer(url: videoURL)
         
-        present(playerViewController, animated: true) {
-            player.play()
+        // Create an AVPlayerLayer
+        playerLayer = AVPlayerLayer(player: player)
+        playerLayer?.frame = videoContainerView.bounds
+        playerLayer?.videoGravity = .resizeAspect
+        
+        // Add the player layer to the container view
+        if let playerLayer = playerLayer {
+            videoContainerView.layer.addSublayer(playerLayer)
         }
+        
+        // Play the video
+        player?.play()
     }
 }
+

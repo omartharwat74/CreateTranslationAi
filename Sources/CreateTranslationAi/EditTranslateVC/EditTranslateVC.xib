@@ -20,6 +20,7 @@
                 <outlet property="backButton" destination="4ZD-ps-gQP" id="L1W-9o-3xX"/>
                 <outlet property="projectName" destination="l7X-qz-VNr" id="EWR-Ty-ljM"/>
                 <outlet property="saveButton" destination="pKC-hJ-xlC" id="i83-hv-ac4"/>
+                <outlet property="videoContainerView" destination="eNF-a9-Dxz" id="yrr-Rp-nqr"/>
                 <outlet property="videoView" destination="gtH-Tt-W8r" id="eiP-Ef-AHD"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -80,12 +81,13 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gtH-Tt-W8r">
                                     <rect key="frame" x="16" y="25" width="361" height="444"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BDe-pQ-W2Y">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eNF-a9-Dxz">
                                             <rect key="frame" x="16" y="12" width="329" height="344"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="344" id="0tg-iF-MRF"/>
+                                                <constraint firstAttribute="height" constant="344" id="f1f-EB-YvE"/>
                                             </constraints>
-                                        </imageView>
+                                        </view>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ysK-of-wqz">
                                             <rect key="frame" x="16" y="364" width="329" height="64"/>
                                             <subviews>
@@ -151,13 +153,13 @@
                                     </subviews>
                                     <color key="backgroundColor" red="0.20784313725490194" green="0.2196078431372549" blue="0.24705882352941178" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstItem="BDe-pQ-W2Y" firstAttribute="leading" secondItem="gtH-Tt-W8r" secondAttribute="leading" constant="16" id="Npw-R6-yXl"/>
-                                        <constraint firstItem="ysK-of-wqz" firstAttribute="top" secondItem="BDe-pQ-W2Y" secondAttribute="bottom" constant="8" id="QDm-4h-PWK"/>
+                                        <constraint firstItem="ysK-of-wqz" firstAttribute="top" secondItem="eNF-a9-Dxz" secondAttribute="bottom" constant="8" id="5dl-fc-c8y"/>
+                                        <constraint firstAttribute="trailing" secondItem="eNF-a9-Dxz" secondAttribute="trailing" constant="16" id="Cck-Wd-YCF"/>
+                                        <constraint firstItem="eNF-a9-Dxz" firstAttribute="leading" secondItem="gtH-Tt-W8r" secondAttribute="leading" constant="16" id="Pjb-CX-LeF"/>
+                                        <constraint firstItem="eNF-a9-Dxz" firstAttribute="top" secondItem="gtH-Tt-W8r" secondAttribute="top" constant="12" id="YIS-bm-JeO"/>
                                         <constraint firstItem="ysK-of-wqz" firstAttribute="leading" secondItem="gtH-Tt-W8r" secondAttribute="leading" constant="16" id="efC-KV-2dR"/>
                                         <constraint firstAttribute="trailing" secondItem="ysK-of-wqz" secondAttribute="trailing" constant="16" id="h5E-ZW-d09"/>
-                                        <constraint firstAttribute="trailing" secondItem="BDe-pQ-W2Y" secondAttribute="trailing" constant="16" id="hn7-57-AM0"/>
                                         <constraint firstAttribute="bottom" secondItem="ysK-of-wqz" secondAttribute="bottom" constant="16" id="kpb-YE-XqY"/>
-                                        <constraint firstItem="BDe-pQ-W2Y" firstAttribute="top" secondItem="gtH-Tt-W8r" secondAttribute="top" constant="12" id="mQe-ch-ikM"/>
                                     </constraints>
                                 </view>
                             </subviews>
