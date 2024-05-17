@@ -40,15 +40,18 @@ class EditTranslateVC: UIViewController {
         }
     }
     @IBOutlet weak var videoContainerView: UIView!
+    @IBOutlet weak var videoThumbnailImageView: UIImageView!
+    @IBOutlet weak var playStopButton: UIButton!
+    
     
     var selectedVideoURL: URL?
     var player: AVPlayer?
     var playerLayer: AVPlayerLayer?
+    var isPlaying = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+        setupThumbnail()
     }
     
     public init() {
@@ -67,7 +70,31 @@ class EditTranslateVC: UIViewController {
     }
     
     @IBAction func playVideoButtonTapped(_ sender: Any) {
-        playVideoInView()
+        if isPlaying {
+            stopVideo()
+        } else {
+            playVideoInView()
+        }
+    }
+    
+    func setupThumbnail() {
+        guard let videoURL = selectedVideoURL else {
+            print("Video URL is not set")
+            return
+        }
+        
+        let asset = AVAsset(url: videoURL)
+        let generator = AVAssetImageGenerator(asset: asset)
+        generator.appliesPreferredTrackTransform = true
+        
+        let time = CMTime(seconds: 0.0, preferredTimescale: 1)
+        do {
+            let imageRef = try generator.copyCGImage(at: time, actualTime: nil)
+            let thumbnail = UIImage(cgImage: imageRef)
+            videoThumbnailImageView.image = thumbnail
+        } catch let error {
+            print("Error generating thumbnail: \(error)")
+        }
     }
     
     func playVideoInView() {
@@ -91,6 +118,15 @@ class EditTranslateVC: UIViewController {
         
         // Play the video
         player?.play()
+        isPlaying = true
+        playStopButton.setTitle("Stop", for: .normal)
+    }
+    
+    func stopVideo() {
+        player?.pause()
+        playerLayer?.removeFromSuperlayer()
+        isPlaying = false
+        playStopButton.setTitle("Play", for: .normal)
     }
 }
 
