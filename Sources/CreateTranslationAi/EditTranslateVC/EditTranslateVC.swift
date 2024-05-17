@@ -86,6 +86,22 @@ class EditTranslateVC: UIViewController {
             playVideoInView()
         }
     }
+    @IBAction func muteSound(_ sender: Any) {
+        if player?.isMuted == true{
+            player?.isMuted = false
+        }else {
+            player?.isMuted = true
+        }
+    }
+    @IBAction func maximizeVideo(_ sender: Any) {
+        guard let videoURL = selectedVideoURL else { return }
+        let playerViewController = AVPlayerViewController()
+        playerViewController.player = AVPlayer(url: videoURL)
+        present(playerViewController, animated: true) {
+            playerViewController.player?.play()
+        }
+    }
+    
     
 }
 

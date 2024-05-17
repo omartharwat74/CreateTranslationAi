@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -95,6 +94,35 @@
                                                 <constraint firstAttribute="height" constant="344" id="f1f-EB-YvE"/>
                                             </constraints>
                                         </view>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="j82-JC-AZl">
+                                            <rect key="frame" x="28" y="20" width="305" height="22"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nqg-qC-Gz3">
+                                                    <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="22" id="JC4-pm-2Mz"/>
+                                                        <constraint firstAttribute="width" secondItem="Nqg-qC-Gz3" secondAttribute="height" multiplier="1:1" id="dsH-Ud-FUv"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="volume-high"/>
+                                                    <connections>
+                                                        <action selector="muteSound:" destination="-1" eventType="touchUpInside" id="FBZ-tr-HRV"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fzF-u1-lhV">
+                                                    <rect key="frame" x="283" y="0.0" width="22" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="22" id="CGb-VB-cXe"/>
+                                                        <constraint firstAttribute="width" secondItem="fzF-u1-lhV" secondAttribute="height" multiplier="1:1" id="ZWz-fc-Aie"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="maximize-3"/>
+                                                    <connections>
+                                                        <action selector="maximizeVideo:" destination="-1" eventType="touchUpInside" id="k6e-bn-1sz"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ysK-of-wqz">
                                             <rect key="frame" x="16" y="364" width="329" height="64"/>
                                             <subviews>
@@ -166,14 +194,17 @@
                                     </subviews>
                                     <color key="backgroundColor" red="0.20784313725490194" green="0.2196078431372549" blue="0.24705882352941178" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
+                                        <constraint firstItem="j82-JC-AZl" firstAttribute="leading" secondItem="eNF-a9-Dxz" secondAttribute="leading" constant="12" id="0ko-tD-mcU"/>
                                         <constraint firstItem="AC1-Lo-6wo" firstAttribute="trailing" secondItem="eNF-a9-Dxz" secondAttribute="trailing" id="5Nf-IZ-H1D"/>
                                         <constraint firstItem="ysK-of-wqz" firstAttribute="top" secondItem="eNF-a9-Dxz" secondAttribute="bottom" constant="8" id="5dl-fc-c8y"/>
                                         <constraint firstItem="AC1-Lo-6wo" firstAttribute="leading" secondItem="eNF-a9-Dxz" secondAttribute="leading" id="7U8-mB-B3n"/>
                                         <constraint firstAttribute="trailing" secondItem="eNF-a9-Dxz" secondAttribute="trailing" constant="16" id="Cck-Wd-YCF"/>
+                                        <constraint firstItem="eNF-a9-Dxz" firstAttribute="top" secondItem="j82-JC-AZl" secondAttribute="top" constant="-8" id="Kc4-Fo-Hwu"/>
                                         <constraint firstItem="eNF-a9-Dxz" firstAttribute="leading" secondItem="gtH-Tt-W8r" secondAttribute="leading" constant="16" id="Pjb-CX-LeF"/>
                                         <constraint firstItem="eNF-a9-Dxz" firstAttribute="top" secondItem="gtH-Tt-W8r" secondAttribute="top" constant="12" id="YIS-bm-JeO"/>
                                         <constraint firstItem="ysK-of-wqz" firstAttribute="leading" secondItem="gtH-Tt-W8r" secondAttribute="leading" constant="16" id="efC-KV-2dR"/>
                                         <constraint firstAttribute="trailing" secondItem="ysK-of-wqz" secondAttribute="trailing" constant="16" id="h5E-ZW-d09"/>
+                                        <constraint firstItem="j82-JC-AZl" firstAttribute="trailing" secondItem="eNF-a9-Dxz" secondAttribute="trailing" constant="-12" id="it1-0a-0yS"/>
                                         <constraint firstAttribute="bottom" secondItem="ysK-of-wqz" secondAttribute="bottom" constant="16" id="kpb-YE-XqY"/>
                                         <constraint firstItem="AC1-Lo-6wo" firstAttribute="bottom" secondItem="eNF-a9-Dxz" secondAttribute="bottom" id="mWY-Cw-CRw"/>
                                         <constraint firstItem="AC1-Lo-6wo" firstAttribute="top" secondItem="eNF-a9-Dxz" secondAttribute="top" id="osy-bR-aNV"/>
@@ -219,7 +250,9 @@
         <image name="arrow.right" catalog="system" width="128" height="95"/>
         <image name="backward-10" width="24" height="24"/>
         <image name="forward-10" width="24" height="24"/>
+        <image name="maximize-3" width="22" height="22"/>
         <image name="video-play" width="32" height="32"/>
+        <image name="volume-high" width="22" height="22"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
