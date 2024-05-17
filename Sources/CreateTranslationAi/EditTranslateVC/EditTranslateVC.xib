@@ -18,6 +18,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditTranslateVC" customModuleProvider="target">
             <connections>
                 <outlet property="backButton" destination="4ZD-ps-gQP" id="L1W-9o-3xX"/>
+                <outlet property="currentSecondLabel" destination="gis-DW-q4i" id="Hs8-Hw-H4Y"/>
+                <outlet property="durationLabel" destination="O26-g8-h0N" id="teq-w0-ZGt"/>
                 <outlet property="playStopButton" destination="7cR-gy-pBk" id="1dg-lj-c7D"/>
                 <outlet property="projectName" destination="l7X-qz-VNr" id="EWR-Ty-ljM"/>
                 <outlet property="saveButton" destination="pKC-hJ-xlC" id="i83-hv-ac4"/>

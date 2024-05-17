@@ -42,6 +42,8 @@ class EditTranslateVC: UIViewController {
     @IBOutlet weak var videoContainerView: UIView!
     @IBOutlet weak var videoThumbnailImageView: UIImageView!
     @IBOutlet weak var playStopButton: UIButton!
+    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var currentSecondLabel: UILabel!
     
     
     var selectedVideoURL: URL?
@@ -53,6 +55,7 @@ class EditTranslateVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupThumbnail()
+        setupVideoDuration()
     }
     
     public init() {
@@ -85,6 +88,17 @@ class EditTranslateVC: UIViewController {
         }
         
         generateThumbnail(for: videoURL, at: CMTime(seconds: 0.0, preferredTimescale: 1))
+    }
+    
+    func setupVideoDuration() {
+        guard let videoURL = selectedVideoURL else {
+            print("Video URL is not set")
+            return
+        }
+        
+        let asset = AVAsset(url: videoURL)
+        let durationInSeconds = CMTimeGetSeconds(asset.duration)
+        durationLabel.text = formatTime(durationInSeconds)
     }
     
     func generateThumbnail(for url: URL, at time: CMTime) {
@@ -123,6 +137,11 @@ class EditTranslateVC: UIViewController {
         // Seek to the current playback time
         player?.seek(to: currentPlaybackTime, toleranceBefore: .zero, toleranceAfter: .zero)
         
+        // Add time observer to update current playback time
+        player?.addPeriodicTimeObserver(forInterval: CMTime(seconds: 1, preferredTimescale: 1), queue: .main) { [weak self] time in
+            self?.updateCurrentTimeLabel(time)
+        }
+        
         // Play the video
         player?.play()
         isPlaying = true
@@ -145,5 +164,16 @@ class EditTranslateVC: UIViewController {
         playerLayer?.removeFromSuperlayer()
         isPlaying = false
         playStopButton.setImage(SCImage(named:"video-play"), for: .normal)
+    }
+    
+    func updateCurrentTimeLabel(_ time: CMTime) {
+        let currentSeconds = CMTimeGetSeconds(time)
+        currentSecondLabel.text = formatTime(currentSeconds)
+    }
+    
+    func formatTime(_ seconds: Float64) -> String {
+        let minutes = Int(seconds) / 60
+        let seconds = Int(seconds) % 60
+        return String(format: "%02d:%02d", minutes, seconds)
     }
 }
