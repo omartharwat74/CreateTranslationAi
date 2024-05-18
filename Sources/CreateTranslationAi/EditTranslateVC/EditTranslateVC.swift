@@ -164,6 +164,7 @@ extension EditTranslateVC {
         player?.play()
         isPlaying = true
         playStopButton.setImage(SCImage(named: "video-pause"), for: .normal)
+        updateTrackView()
     }
     
     func stopVideo() {
@@ -201,14 +202,57 @@ extension EditTranslateVC {
         return String(format: "%02d:%02d", minutes, seconds)
     }
     func updateTrackView() {
-        guard let player = player, let duration = player.currentItem?.duration else { return }
+        guard let player = player, let duration = player.currentItem?.duration else {
+            print("Player or duration not available")
+            return
+        }
+        
         let currentTime = CMTimeGetSeconds(player.currentTime())
         let totalTime = CMTimeGetSeconds(duration)
+        
+        // Safeguard against division by zero
+        guard totalTime > 0 else {
+            print("Total time is zero")
+            return
+        }
+        
         let progress = CGFloat(currentTime / totalTime)
+        
+        // Safeguard against invalid progress values
+        guard !progress.isNaN && !progress.isInfinite else {
+            print("Invalid progress value")
+            return
+        }
         
         let trackContainerWidth = trackContainerView.bounds.width
         let newWidth = trackContainerWidth * progress
         
+        // Safeguard against invalid newWidth values
+        guard !newWidth.isNaN && !newWidth.isInfinite else {
+            print("Invalid newWidth value")
+            return
+        }
+        
+        // Debug prints for verifying calculations
+        print("Current Time: \(currentTime)")
+        print("Total Time: \(totalTime)")
+        print("Progress: \(progress)")
+        print("Track Container Width: \(trackContainerWidth)")
+        print("New Width: \(newWidth)")
+        
+        // Update trackView's width
         trackView.frame.size.width = newWidth
     }
+
+//    func updateTrackView() {
+//        guard let player = player, let duration = player.currentItem?.duration else { return }
+//        let currentTime = CMTimeGetSeconds(player.currentTime())
+//        let totalTime = CMTimeGetSeconds(duration)
+//        let progress = CGFloat(currentTime / totalTime)
+//        
+//        let trackContainerWidth = trackContainerView.bounds.width
+//        let newWidth = trackContainerWidth * progress
+//        
+//        trackView.frame.size.width = newWidth
+//    }
 }
