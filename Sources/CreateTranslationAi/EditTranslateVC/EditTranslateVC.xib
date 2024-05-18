@@ -25,6 +25,7 @@
                 <outlet property="saveButton" destination="pKC-hJ-xlC" id="i83-hv-ac4"/>
                 <outlet property="trackContainerView" destination="N7Y-sG-tnX" id="ZxR-GX-wOH"/>
                 <outlet property="trackView" destination="20k-w0-XOI" id="Q5s-yc-ikn"/>
+                <outlet property="trackViewWidthConstraint" destination="yc2-7V-DkE" id="wBc-kb-D2N"/>
                 <outlet property="videoContainerView" destination="eNF-a9-Dxz" id="yrr-Rp-nqr"/>
                 <outlet property="videoThumbnailImageView" destination="AC1-Lo-6wo" id="T8f-mO-cCr"/>
                 <outlet property="videoView" destination="gtH-Tt-W8r" id="eiP-Ef-AHD"/>

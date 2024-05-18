@@ -46,6 +46,7 @@ class EditTranslateVC: UIViewController {
     @IBOutlet weak var currentSecondLabel: UILabel!
     @IBOutlet weak var trackContainerView: UIView!
     @IBOutlet weak var trackView: UIView!
+    @IBOutlet weak var trackViewWidthConstraint: NSLayoutConstraint!
     
     
     var selectedVideoURL: URL?
@@ -240,9 +241,15 @@ extension EditTranslateVC {
         print("Track Container Width: \(trackContainerWidth)")
         print("New Width: \(newWidth)")
         
-        // Update trackView's width
-        trackView.frame.size.width = newWidth
+        // Update trackView's width constraint
+        trackViewWidthConstraint.constant = newWidth
+        
+        // Optionally, animate the change if needed
+        UIView.animate(withDuration: 0.1) {
+            self.trackContainerView.layoutIfNeeded()
+        }
     }
+
 
 //    func updateTrackView() {
 //        guard let player = player, let duration = player.currentItem?.duration else { return }
