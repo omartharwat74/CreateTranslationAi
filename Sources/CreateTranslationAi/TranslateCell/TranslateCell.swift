@@ -9,7 +9,7 @@ import UIKit
 
 class TranslateCell: UITableViewCell {
 
-    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var translateTime: UILabel!
     @IBOutlet weak var translateFrom: UILabel!
     @IBOutlet weak var translateFromImage: UIImageView!
     @IBOutlet weak var translateTo: UILabel!

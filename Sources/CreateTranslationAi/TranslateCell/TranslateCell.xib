@@ -129,11 +129,11 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
-                <outlet property="durationLabel" destination="gwH-gd-Idk" id="0cM-py-Emx"/>
                 <outlet property="editButton" destination="aqi-6T-8s1" id="1pH-Ol-wah"/>
                 <outlet property="editView" destination="FAF-sp-L07" id="Vcf-Qs-H7p"/>
                 <outlet property="translateFrom" destination="B7a-PZ-Ddm" id="dDE-QV-m50"/>
                 <outlet property="translateFromImage" destination="fcC-BS-gDv" id="xw5-ft-dzN"/>
+                <outlet property="translateTime" destination="gwH-gd-Idk" id="0cM-py-Emx"/>
                 <outlet property="translateTo" destination="lNA-Yr-lvb" id="pe7-go-fPq"/>
                 <outlet property="translateToImage" destination="I5L-78-Djm" id="F9R-G0-6Ex"/>
             </connections>
