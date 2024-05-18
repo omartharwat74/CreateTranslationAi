@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -22,6 +23,8 @@
                 <outlet property="playStopButton" destination="7cR-gy-pBk" id="1dg-lj-c7D"/>
                 <outlet property="projectName" destination="l7X-qz-VNr" id="EWR-Ty-ljM"/>
                 <outlet property="saveButton" destination="pKC-hJ-xlC" id="i83-hv-ac4"/>
+                <outlet property="trackContainerView" destination="N7Y-sG-tnX" id="ZxR-GX-wOH"/>
+                <outlet property="trackView" destination="20k-w0-XOI" id="Q5s-yc-ikn"/>
                 <outlet property="videoContainerView" destination="eNF-a9-Dxz" id="yrr-Rp-nqr"/>
                 <outlet property="videoThumbnailImageView" destination="AC1-Lo-6wo" id="T8f-mO-cCr"/>
                 <outlet property="videoView" destination="gtH-Tt-W8r" id="eiP-Ef-AHD"/>
@@ -184,8 +187,18 @@
                                                 </stackView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N7Y-sG-tnX">
                                                     <rect key="frame" x="0.0" y="52" width="329" height="12"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="20k-w0-XOI">
+                                                            <rect key="frame" x="0.0" y="0.0" width="329" height="12"/>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        </view>
+                                                    </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
+                                                        <constraint firstItem="20k-w0-XOI" firstAttribute="top" secondItem="N7Y-sG-tnX" secondAttribute="top" id="CBl-jG-UV0"/>
+                                                        <constraint firstAttribute="bottom" secondItem="20k-w0-XOI" secondAttribute="bottom" id="FzU-3M-zn6"/>
+                                                        <constraint firstAttribute="trailing" secondItem="20k-w0-XOI" secondAttribute="trailing" id="cja-kN-wtv"/>
+                                                        <constraint firstItem="20k-w0-XOI" firstAttribute="leading" secondItem="N7Y-sG-tnX" secondAttribute="leading" id="eKC-p5-E6Y"/>
                                                         <constraint firstAttribute="height" constant="12" id="nOc-HN-q51"/>
                                                     </constraints>
                                                 </view>

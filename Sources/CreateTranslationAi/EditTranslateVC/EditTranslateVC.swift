@@ -44,6 +44,8 @@ class EditTranslateVC: UIViewController {
     @IBOutlet weak var playStopButton: UIButton!
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var currentSecondLabel: UILabel!
+    @IBOutlet weak var trackContainerView: UIView!
+    @IBOutlet weak var trackView: UIView!
     
     
     var selectedVideoURL: URL?
@@ -182,6 +184,7 @@ extension EditTranslateVC {
             self?.currentPlaybackTime = newTime
             self?.updateCurrentTimeLabel(newTime)
             self?.generateThumbnail(for: self!.selectedVideoURL!, at: newTime)
+            self?.updateTrackView()
         }
     }
     
@@ -195,5 +198,16 @@ extension EditTranslateVC {
         let minutes = Int(seconds) / 60
         let seconds = Int(seconds) % 60
         return String(format: "%02d:%02d", minutes, seconds)
+    }
+    func updateTrackView() {
+        guard let player = player, let duration = player.currentItem?.duration else { return }
+        let currentTime = CMTimeGetSeconds(player.currentTime())
+        let totalTime = CMTimeGetSeconds(duration)
+        let progress = CGFloat(currentTime / totalTime)
+        
+        let trackContainerWidth = trackContainerView.bounds.width
+        let newWidth = trackContainerWidth * progress
+        
+        trackView.frame.size.width = newWidth
     }
 }
