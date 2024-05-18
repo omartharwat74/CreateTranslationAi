@@ -44,8 +44,16 @@ class EditTranslateVC: UIViewController {
     @IBOutlet weak var playStopButton: UIButton!
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var currentSecondLabel: UILabel!
-    @IBOutlet weak var trackContainerView: UIView!
-    @IBOutlet weak var trackView: UIView!
+    @IBOutlet weak var trackContainerView: UIView!{
+        didSet{
+            trackContainerView.layer.cornerRadius = 8
+        }
+    }
+    @IBOutlet weak var trackView: UIView!{
+        didSet{
+            trackView.layer.cornerRadius = 8
+        }
+    }
     @IBOutlet weak var trackViewWidthConstraint: NSLayoutConstraint!
     
     
