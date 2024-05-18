@@ -210,16 +210,12 @@ extension EditTranslateVC {
         
         let currentTime = CMTimeGetSeconds(player.currentTime())
         let totalTime = CMTimeGetSeconds(duration)
-        
-        // Safeguard against division by zero
         guard totalTime > 0 else {
             print("Total time is zero")
             return
         }
         
         let progress = CGFloat(currentTime / totalTime)
-        
-        // Safeguard against invalid progress values
         guard !progress.isNaN && !progress.isInfinite else {
             print("Invalid progress value")
             return
@@ -227,39 +223,13 @@ extension EditTranslateVC {
         
         let trackContainerWidth = trackContainerView.bounds.width
         let newWidth = trackContainerWidth * progress
-        
-        // Safeguard against invalid newWidth values
         guard !newWidth.isNaN && !newWidth.isInfinite else {
             print("Invalid newWidth value")
             return
         }
-        
-        // Debug prints for verifying calculations
-        print("Current Time: \(currentTime)")
-        print("Total Time: \(totalTime)")
-        print("Progress: \(progress)")
-        print("Track Container Width: \(trackContainerWidth)")
-        print("New Width: \(newWidth)")
-        
-        // Update trackView's width constraint
         trackViewWidthConstraint.constant = newWidth
-        
-        // Optionally, animate the change if needed
         UIView.animate(withDuration: 0.1) {
             self.trackContainerView.layoutIfNeeded()
         }
     }
-
-
-//    func updateTrackView() {
-//        guard let player = player, let duration = player.currentItem?.duration else { return }
-//        let currentTime = CMTimeGetSeconds(player.currentTime())
-//        let totalTime = CMTimeGetSeconds(duration)
-//        let progress = CGFloat(currentTime / totalTime)
-//        
-//        let trackContainerWidth = trackContainerView.bounds.width
-//        let newWidth = trackContainerWidth * progress
-//        
-//        trackView.frame.size.width = newWidth
-//    }
 }
