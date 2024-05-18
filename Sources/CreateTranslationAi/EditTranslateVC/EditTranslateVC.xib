@@ -85,7 +85,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="393" height="698"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gtH-Tt-W8r">
-                                    <rect key="frame" x="16" y="25" width="361" height="438"/>
+                                    <rect key="frame" x="16" y="25" width="361" height="454"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AC1-Lo-6wo">
                                             <rect key="frame" x="16" y="12" width="329" height="344"/>
@@ -127,7 +127,7 @@
                                             </subviews>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ysK-of-wqz">
-                                            <rect key="frame" x="16" y="364" width="329" height="58"/>
+                                            <rect key="frame" x="16" y="364" width="329" height="74"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="Jp1-LL-9wN">
                                                     <rect key="frame" x="0.0" y="0.0" width="329" height="42"/>
@@ -185,20 +185,17 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N7Y-sG-tnX">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="20k-w0-XOI">
                                                     <rect key="frame" x="0.0" y="52" width="329" height="6"/>
-                                                    <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="20k-w0-XOI">
-                                                            <rect key="frame" x="0.0" y="0.0" width="329" height="6"/>
-                                                            <color key="backgroundColor" red="0.3411764705882353" green="0.58431372549019611" blue="0.58039215686274503" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </view>
-                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.3411764705882353" green="0.58431372549019611" blue="0.58039215686274503" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="6" id="Cbe-kh-yfn"/>
+                                                    </constraints>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N7Y-sG-tnX">
+                                                    <rect key="frame" x="0.0" y="68" width="329" height="6"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
-                                                        <constraint firstItem="20k-w0-XOI" firstAttribute="top" secondItem="N7Y-sG-tnX" secondAttribute="top" id="CBl-jG-UV0"/>
-                                                        <constraint firstAttribute="bottom" secondItem="20k-w0-XOI" secondAttribute="bottom" id="FzU-3M-zn6"/>
-                                                        <constraint firstAttribute="trailing" secondItem="20k-w0-XOI" secondAttribute="trailing" id="cja-kN-wtv"/>
-                                                        <constraint firstItem="20k-w0-XOI" firstAttribute="leading" secondItem="N7Y-sG-tnX" secondAttribute="leading" id="eKC-p5-E6Y"/>
                                                         <constraint firstAttribute="height" constant="6" id="nOc-HN-q51"/>
                                                     </constraints>
                                                 </view>
