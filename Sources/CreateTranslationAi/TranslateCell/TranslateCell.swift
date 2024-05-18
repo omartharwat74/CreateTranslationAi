@@ -21,6 +21,12 @@ class TranslateCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    override func layoutSubviews() {
+          super.layoutSubviews()
+          let margins = UIEdgeInsets(top: 24, left: 0, bottom: 24, right: 0)
+          contentView.frame = contentView.frame.inset(by: margins)
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
