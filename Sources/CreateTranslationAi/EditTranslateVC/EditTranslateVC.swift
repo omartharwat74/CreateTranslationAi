@@ -159,6 +159,7 @@ extension EditTranslateVC {
         player?.seek(to: currentPlaybackTime, toleranceBefore: .zero, toleranceAfter: .zero)
         player?.addPeriodicTimeObserver(forInterval: CMTime(seconds: 1, preferredTimescale: 1), queue: .main) { [weak self] time in
             self?.updateCurrentTimeLabel(time)
+            self?.updateTrackView()
         }
         player?.play()
         isPlaying = true
