@@ -11,9 +11,9 @@ class TranslateCell: UITableViewCell {
 
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var translateFrom: UILabel!
-    @IBOutlet weak var countryFromImage: UIImageView!
+    @IBOutlet weak var translateFromImage: UIImageView!
     @IBOutlet weak var translateTo: UILabel!
-    @IBOutlet weak var countryToImage: UIImageView!
+    @IBOutlet weak var translateToImage: UIImageView!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var editView: UIView!
     
