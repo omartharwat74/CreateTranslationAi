@@ -134,8 +134,8 @@
                 <outlet property="durationLabel" destination="gwH-gd-Idk" id="0cM-py-Emx"/>
                 <outlet property="editButton" destination="aqi-6T-8s1" id="1pH-Ol-wah"/>
                 <outlet property="editView" destination="FAF-sp-L07" id="Vcf-Qs-H7p"/>
-                <outlet property="translateFromLabel" destination="B7a-PZ-Ddm" id="dDE-QV-m50"/>
-                <outlet property="translateToLabel" destination="lNA-Yr-lvb" id="pe7-go-fPq"/>
+                <outlet property="translateFrom" destination="B7a-PZ-Ddm" id="dDE-QV-m50"/>
+                <outlet property="translateTo" destination="lNA-Yr-lvb" id="pe7-go-fPq"/>
             </connections>
             <point key="canvasLocation" x="33" y="16"/>
         </tableViewCell>
