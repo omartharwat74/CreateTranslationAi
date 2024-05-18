@@ -189,15 +189,17 @@
                                                     <rect key="frame" x="0.0" y="52" width="329" height="6"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="20k-w0-XOI">
-                                                            <rect key="frame" x="0.0" y="0.0" width="329" height="6"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="6"/>
                                                             <color key="backgroundColor" red="0.3411764705882353" green="0.58431372549019611" blue="0.58039215686274503" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" id="yc2-7V-DkE"/>
+                                                            </constraints>
                                                         </view>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstItem="20k-w0-XOI" firstAttribute="top" secondItem="N7Y-sG-tnX" secondAttribute="top" id="5hD-dt-gyd"/>
-                                                        <constraint firstAttribute="trailing" secondItem="20k-w0-XOI" secondAttribute="trailing" id="GK1-Vw-fTN"/>
-                                                        <constraint firstItem="20k-w0-XOI" firstAttribute="leading" secondItem="N7Y-sG-tnX" secondAttribute="leading" id="I5m-2Z-ZS1"/>
+                                                        <constraint firstItem="20k-w0-XOI" firstAttribute="leading" secondItem="N7Y-sG-tnX" secondAttribute="leading" id="J19-Jj-m8p"/>
                                                         <constraint firstAttribute="bottom" secondItem="20k-w0-XOI" secondAttribute="bottom" id="iSi-VU-T9C"/>
                                                         <constraint firstAttribute="height" constant="6" id="nOc-HN-q51"/>
                                                     </constraints>
