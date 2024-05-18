@@ -14,7 +14,7 @@ class TranslateCell: UITableViewCell {
     @IBOutlet weak var translateFromImage: UIImageView!
     @IBOutlet weak var translateTo: UILabel!
     @IBOutlet weak var translateToImage: UIImageView!
-    @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var editTextButton: UIButton!
     @IBOutlet weak var editView: UIView!
     
     override func awakeFromNib() {
