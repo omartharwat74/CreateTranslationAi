@@ -1,6 +1,6 @@
 //
 //  TranslateCell.swift
-//  
+//
 //
 //  Created by Omar Tharwat on 18/05/2024.
 //
@@ -8,7 +8,7 @@
 import UIKit
 
 class TranslateCell: UITableViewCell {
-
+    
     @IBOutlet weak var translateTime: UILabel!
     @IBOutlet weak var translateFrom: UILabel!
     @IBOutlet weak var translateFromImage: UIImageView!
@@ -16,6 +16,7 @@ class TranslateCell: UITableViewCell {
     @IBOutlet weak var translateToImage: UIImageView!
     @IBOutlet weak var editTextButton: UIButton!
     @IBOutlet weak var editView: UIView!
+    @IBOutlet weak var mainView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,14 +24,20 @@ class TranslateCell: UITableViewCell {
     }
     
     override func layoutSubviews() {
-          super.layoutSubviews()
-          let margins = UIEdgeInsets(top: 24, left: 0, bottom: 24, right: 0)
-          contentView.frame = contentView.frame.inset(by: margins)
+        super.layoutSubviews()
+        mainView.layer.shadowColor = UIColor(red: 0.341, green: 0.584, blue: 0.58, alpha: 0.15).cgColor
+        mainView.layer.shadowOpacity = 1
+        mainView.layer.shadowRadius = 15
+        mainView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        mainView.layer.cornerRadius = 15
+        mainView.layer.borderWidth = 0.5
+        mainView.layer.borderColor = UIColor(red: 0.341, green: 0.584, blue: 0.58, alpha: 1).cgColor
+        editView.layer.cornerRadius = 6
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     @IBAction func editClick(_ sender: Any) {

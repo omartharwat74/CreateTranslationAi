@@ -254,19 +254,11 @@ extension EditTranslateVC : UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TranslateCell", for: indexPath) as! TranslateCell
-        cell.layer.shadowColor = UIColor(red: 0.341, green: 0.584, blue: 0.58, alpha: 0.15).cgColor
-        cell.layer.shadowOpacity = 1
-        cell.layer.shadowRadius = 15
-        cell.layer.shadowOffset = CGSize(width: 0, height: 0)
-        cell.layer.cornerRadius = 15
-        cell.layer.borderWidth = 0.5
-        cell.layer.borderColor = UIColor(red: 0.341, green: 0.584, blue: 0.58, alpha: 1).cgColor
-        cell.editView.layer.cornerRadius = 6
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 123
+        return 171
     }
     
     

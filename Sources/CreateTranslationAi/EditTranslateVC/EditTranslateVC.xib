@@ -241,7 +241,7 @@
                                     </constraints>
                                 </view>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="A2N-hU-moH" customClass="TableViewContentSized" customModule="CreateTranslationAi">
-                                    <rect key="frame" x="16" y="487" width="361" height="187"/>
+                                    <rect key="frame" x="16" y="463" width="361" height="211"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </tableView>
                             </subviews>
@@ -253,7 +253,7 @@
                                 <constraint firstAttribute="trailing" secondItem="A2N-hU-moH" secondAttribute="trailing" constant="16" id="ani-dv-56y"/>
                                 <constraint firstAttribute="trailing" secondItem="gtH-Tt-W8r" secondAttribute="trailing" constant="16" id="bIT-jB-YqT"/>
                                 <constraint firstAttribute="bottom" secondItem="A2N-hU-moH" secondAttribute="bottom" constant="24" id="of8-gL-UtS"/>
-                                <constraint firstItem="A2N-hU-moH" firstAttribute="top" secondItem="gtH-Tt-W8r" secondAttribute="bottom" constant="24" id="tWC-mR-Hkv"/>
+                                <constraint firstItem="A2N-hU-moH" firstAttribute="top" secondItem="gtH-Tt-W8r" secondAttribute="bottom" id="tWC-mR-Hkv"/>
                             </constraints>
                         </view>
                     </subviews>
