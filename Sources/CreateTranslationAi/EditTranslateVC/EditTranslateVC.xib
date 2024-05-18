@@ -23,6 +23,7 @@
                 <outlet property="playStopButton" destination="7cR-gy-pBk" id="1dg-lj-c7D"/>
                 <outlet property="projectName" destination="l7X-qz-VNr" id="EWR-Ty-ljM"/>
                 <outlet property="saveButton" destination="pKC-hJ-xlC" id="i83-hv-ac4"/>
+                <outlet property="tableView" destination="A2N-hU-moH" id="Hwd-Rf-LoP"/>
                 <outlet property="trackContainerView" destination="N7Y-sG-tnX" id="ZxR-GX-wOH"/>
                 <outlet property="trackView" destination="20k-w0-XOI" id="Q5s-yc-ikn"/>
                 <outlet property="trackViewWidthConstraint" destination="yc2-7V-DkE" id="wBc-kb-D2N"/>
@@ -239,12 +240,20 @@
                                         <constraint firstItem="AC1-Lo-6wo" firstAttribute="top" secondItem="eNF-a9-Dxz" secondAttribute="top" id="osy-bR-aNV"/>
                                     </constraints>
                                 </view>
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="A2N-hU-moH" customClass="TableViewContentSized" customModule="CreateTranslationAi">
+                                    <rect key="frame" x="16" y="487" width="361" height="187"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                </tableView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="gtH-Tt-W8r" firstAttribute="leading" secondItem="5TX-Yq-88P" secondAttribute="leading" constant="16" id="DDw-n7-TaG"/>
+                                <constraint firstItem="A2N-hU-moH" firstAttribute="leading" secondItem="5TX-Yq-88P" secondAttribute="leading" constant="16" id="Lw6-Mg-612"/>
                                 <constraint firstItem="gtH-Tt-W8r" firstAttribute="top" secondItem="5TX-Yq-88P" secondAttribute="top" constant="25" id="Ye8-SO-a3x"/>
+                                <constraint firstAttribute="trailing" secondItem="A2N-hU-moH" secondAttribute="trailing" constant="16" id="ani-dv-56y"/>
                                 <constraint firstAttribute="trailing" secondItem="gtH-Tt-W8r" secondAttribute="trailing" constant="16" id="bIT-jB-YqT"/>
+                                <constraint firstAttribute="bottom" secondItem="A2N-hU-moH" secondAttribute="bottom" constant="24" id="of8-gL-UtS"/>
+                                <constraint firstItem="A2N-hU-moH" firstAttribute="top" secondItem="gtH-Tt-W8r" secondAttribute="bottom" constant="24" id="tWC-mR-Hkv"/>
                             </constraints>
                         </view>
                     </subviews>
