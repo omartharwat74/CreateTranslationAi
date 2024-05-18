@@ -46,12 +46,12 @@ class EditTranslateVC: UIViewController {
     @IBOutlet weak var currentSecondLabel: UILabel!
     @IBOutlet weak var trackContainerView: UIView!{
         didSet{
-            trackContainerView.layer.cornerRadius = 2
+            trackContainerView.layer.cornerRadius = 3
         }
     }
     @IBOutlet weak var trackView: UIView!{
         didSet{
-            trackView.layer.cornerRadius = 2
+            trackView.layer.cornerRadius = 3
         }
     }
     @IBOutlet weak var trackViewWidthConstraint: NSLayoutConstraint!
