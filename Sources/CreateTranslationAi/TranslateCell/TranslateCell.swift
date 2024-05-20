@@ -30,9 +30,6 @@ class TranslateCell: UITableViewCell {
         mainView.layer.shadowRadius = 15
         mainView.layer.shadowOffset = CGSize(width: 0, height: 0)
         mainView.layer.cornerRadius = 15
-        mainView.layer.borderWidth = 0.5
-        mainView.layer.borderColor = UIColor(red: 0.341, green: 0.584, blue: 0.58, alpha: 1).cgColor
-        editView.layer.cornerRadius = 6
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -40,6 +37,13 @@ class TranslateCell: UITableViewCell {
         
         // Configure the view for the selected state
     }
+    
+    func activeBorder(){
+        mainView.layer.borderWidth = 0.5
+        mainView.layer.borderColor = UIColor(red: 0.341, green: 0.584, blue: 0.58, alpha: 1).cgColor
+        editView.layer.cornerRadius = 6
+    }
+    
     @IBAction func editClick(_ sender: Any) {
     }
     

@@ -254,6 +254,9 @@ extension EditTranslateVC : UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TranslateCell", for: indexPath) as! TranslateCell
+        if indexPath.row == 0 {
+            cell.activeBorder()
+        }
         return cell
     }
     
