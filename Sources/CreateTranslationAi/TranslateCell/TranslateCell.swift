@@ -32,8 +32,6 @@ class TranslateCell: UITableViewCell {
         mainView.layer.cornerRadius = 15
         editView.layer.cornerRadius = 6
         mainView.layer.borderWidth = 0.5
-//        mainView.backgroundColor = UIColor(red: 0.208, green: 0.22, blue: 0.247, alpha: 0.15)
-        mainView.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.1).cgColor
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -46,6 +44,10 @@ class TranslateCell: UITableViewCell {
         mainView.backgroundColor = .clear
         mainView.layer.borderColor = UIColor(red: 0.341, green: 0.584, blue: 0.58, alpha: 1).cgColor
         editView.backgroundColor = UIColor(red: 0.208, green: 0.22, blue: 0.247, alpha: 1)
+    }
+    
+    func unActiveBorder(){
+        mainView.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.1).cgColor
     }
     
     @IBAction func editClick(_ sender: Any) {
